@@ -11,7 +11,7 @@ const Hero = () => {
             <div className="w-[90%] xl:w-[85%] mx-auto grid md:grid-cols-2 gap-10 items-center">
 
                 {/* LEFT CONTENT */}
-                <div className="text-center md:text-left">
+                <div className="text-center md:text-left pt-10 md:pt-0">
                     <h1 className="text-3xl md:text-4xl font-semibold leading-tight">
                         Natural Hair & Skin
                         Rejuvenation Therapy

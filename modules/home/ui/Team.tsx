@@ -76,7 +76,7 @@ const Team = () => {
 
                             {/* Info */}
                             <div className="py-3 text-start">
-                                <h3 className="text-lg font-semibold">
+                                <h3 className="text-base md:text-lg font-semibold">
                                     {member.name}
                                 </h3>
                                 <p className="text-gray-400 text-sm mt-1">

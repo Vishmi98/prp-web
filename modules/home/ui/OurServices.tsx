@@ -39,7 +39,7 @@ const OurServices = () => {
                             </div>
 
                             {/* Content */}
-                            <div className="p-5">
+                            <div className="py-5">
                                 <div className="flex items-start gap-3 mb-3">
                                     <h1 className="text-4xl md:6xl font-bold text-gold">
                                         {item.id}.
