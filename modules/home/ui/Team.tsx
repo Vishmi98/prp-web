@@ -37,7 +37,7 @@ const Team = () => {
                     <h2 className="text-2xl md:text-3xl font-semibold leading-tight">
                         Meet Our Experts For Your Better Results.
                     </h2>
-                    <p className="mt-4 max-w-2xl mx-auto">
+                    <p className="mt-4 max-w-2xl mx-auto text-gray-600 text-sm md:text-base">
                         Our experienced medical professionals ensure safe,
                         effective, and personalized PRP treatments.
                     </p>
@@ -52,7 +52,7 @@ const Team = () => {
                             className="group overflow-hidden hover:scale-[1.03] transition duration-300"
                         >
                             {/* Image */}
-                            <div className="relative h-50 md:h-65 w-full overflow-hidden">
+                            <div className="relative h-48 md:h-65 w-full overflow-hidden">
                                 <Image
                                     src={member.image}
                                     alt={member.name}

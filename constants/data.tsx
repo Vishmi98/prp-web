@@ -151,3 +151,41 @@ export const FAQ_DATA = [
             "Visible improvements can often be seen within a few weeks, with full results gradually developing over several months as collagen and tissue regeneration occur naturally.",
     },
 ];
+
+export const STORIES = [
+    {
+        name: "Sarah Jenkins",
+        treatment: "Skin Rejuvenation",
+        text: "After just three sessions of PRP, my skin feels completely renewed. The acne scars have faded significantly, and I have a natural glow that I haven't seen in years. The team was incredibly professional and made the whole experience luxurious.",
+        rating: 5,
+        image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=200&auto=format&fit=crop",
+    },
+    {
+        name: "Michael Chen",
+        treatment: "Hair Restoration",
+        text: "I was skeptical at first, but the results speak for themselves. My hairline has visibly thickened, and the shedding has completely stopped. This is the most confident I've felt in a decade. Highly recommend their targeted PRP therapy.",
+        rating: 5,
+        image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=200&auto=format&fit=crop",
+    },
+    {
+        name: "Elena Rodriguez",
+        treatment: "Under-Eye Treatment",
+        text: "The dark circles and hollowness under my eyes made me look constantly exhausted. PRP therapy was a game-changer. It's subtle, natural, and I finally look as rested as I feel. A truly premium service from start to finish.",
+        rating: 5,
+        image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=200&auto=format&fit=crop",
+    },
+    {
+        name: "David Thompson",
+        treatment: "Hair Restoration",
+        text: "The thinning at my crown was really starting to affect my confidence. After 4 sessions of PRP, my barber was the first to notice the new growth. It's thick, healthy, and most importantly, it's my own hair.",
+        rating: 5,
+        image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=200&auto=format&fit=crop",
+    },
+    {
+        name: "Aisha Patel",
+        treatment: "Skin Rejuvenation",
+        text: "I wanted a non-surgical option to improve my skin texture and fine lines. The 'Vampire Facial' here exceeded my expectations. My skin is noticeably firmer and the pigmentation has almost disappeared. Truly an investment in myself.",
+        rating: 5,
+        image: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?q=80&w=200&auto=format&fit=crop",
+    },
+];

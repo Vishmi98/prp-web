@@ -17,7 +17,7 @@ const Hero = () => {
             <div className="w-[90%] xl:w-[85%] mx-auto grid md:grid-cols-2 gap-10 items-center">
 
                 {/* LEFT CONTENT */}
-                <div className="text-center md:text-left pt-10 md:pt-0">
+                <div className="text-center md:text-left pt-10 md:pt-0 flex flex-col md:items-start items-center">
                     <h1 className="text-3xl md:text-4xl font-semibold leading-tight">
                         Natural Hair & Skin
                         Rejuvenation Therapy
@@ -30,7 +30,7 @@ const Hero = () => {
                     </p>
 
                     {/* Buttons */}
-                    <div className="mt-10 flex flex-row items-center md:items-start gap-4">
+                    <div className="mt-10 flex flex-row items-center md:items-start">
                         <Button onClick={() => router.push("/contact")}>Book Online</Button>
                     </div>
                 </div>

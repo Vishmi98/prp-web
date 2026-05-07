@@ -10,11 +10,11 @@ const OurServices = () => {
             <div className="w-[90%] xl:w-[85%] mx-auto">
 
                 {/* Heading */}
-                <div className="text-center mb-14">
+                <div className="text-left md:text-center mb-14">
                     <h2 className="text-3xl md:text-4xl font-semibold">
                         Our Services
                     </h2>
-                    <p className="mt-4 max-w-2xl mx-auto">
+                    <p className="mt-4 max-w-2xl mx-auto text-gray-600 text-sm md:text-base">
                         Advanced PRP treatments designed to restore your natural beauty,
                         confidence, and skin health.
                     </p>
@@ -40,7 +40,7 @@ const OurServices = () => {
 
                             {/* Content */}
                             <div className="py-5">
-                                <div className="flex items-start gap-3 mb-3">
+                                <div className="flex items-center gap-3 mb-3">
                                     <h1 className="text-4xl md:6xl font-bold text-gold">
                                         {item.id}.
                                     </h1>
