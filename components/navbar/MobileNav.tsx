@@ -35,6 +35,7 @@ const MobileNav = ({ closeNav, showNav }: MobileNavProps) => {
   const handleClickButton = () => {
     router.push("/contact");
     closeNav();
+    setOpenDropdown(null);
   }
 
   return (
