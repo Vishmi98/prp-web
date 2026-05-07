@@ -1,12 +1,8 @@
 import React from "react";
 import clsx from "clsx";
 
-type ButtonProps = {
-  children: React.ReactNode;
-  onClick?: () => void;
-  variant?: "primary" | "outline";
-  className?: string;
-};
+import { ButtonProps } from "@/constants/types";
+
 
 const Button = ({
   children,
@@ -18,7 +14,7 @@ const Button = ({
     <button
       onClick={onClick}
       className={clsx(
-        "px-6 py-2 text-sm font-semibold rounded-md tracking-wide transition-all duration-300",
+        "px-6 py-2 text-sm font-semibold rounded-md tracking-wide transition-all duration-300 cursor-pointer",
 
         // Variants
         variant === "primary" &&

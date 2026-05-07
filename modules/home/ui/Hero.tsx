@@ -1,10 +1,16 @@
+"use client"
+
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 import Button from "@/components/Button";
 
+
 const Hero = () => {
+    const router = useRouter();
+
     return (
         <section className="relative h-screen flex items-center bg-white">
 
@@ -25,15 +31,7 @@ const Hero = () => {
 
                     {/* Buttons */}
                     <div className="mt-10 flex flex-row items-center md:items-start gap-4">
-                        <Link href="/consultation">
-                            <Button>Book Consultation</Button>
-                        </Link>
-
-                        <Link href="/services">
-                            <Button variant="outline">
-                                Explore Treatments
-                            </Button>
-                        </Link>
+                        <Button onClick={() => router.push("/contact")}>Book Online</Button>
                     </div>
                 </div>
 

@@ -1,23 +1,8 @@
 import React from "react";
 import Image from "next/image";
 
-const results = [
-    {
-        title: "Hair Restoration Result",
-        before: "/r1.webp",
-        after: "/r2.webp",
-    },
-    {
-        title: "Skin Rejuvenation Result",
-        before: "/r7.jpg",
-        after: "/r8.jpg",
-    },
-    {
-        title: "Acne Scar Treatment Result",
-        before: "/r5.webp",
-        after: "/r6.webp",
-    },
-];
+import { RESULTS_DATA } from "@/constants/data";
+
 
 const Results = () => {
     return (
@@ -38,7 +23,7 @@ const Results = () => {
                 {/* Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
 
-                    {results.map((item, index) => (
+                    {RESULTS_DATA.map((item, index) => (
                         <div
                             key={index}
                             className="overflow-hidden hover:scale-[1.03] transition"

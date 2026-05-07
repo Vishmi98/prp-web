@@ -4,6 +4,7 @@ import Hero from '@/modules/home/ui/Hero'
 import OurServices from '@/modules/home/ui/OurServices'
 import Results from '@/modules/home/ui/Results'
 import Team from '@/modules/home/ui/Team'
+import SuccessStories from '@/modules/home/ui/SuccessStories'
 
 
 const Home = () => {
@@ -13,6 +14,7 @@ const Home = () => {
       <OurServices />
       <Results />
       <Team />
+      <SuccessStories />
     </div>
   )
 }
