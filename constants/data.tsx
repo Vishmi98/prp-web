@@ -86,7 +86,7 @@ export const TREATMENT_DETAILS: Record<string, any> = {
     "hair-regrowth": {
         title: "Hair Regrowth Therapy",
         subtitle: "Comprehensive solutions for sustainable hair regrowth.",
-        heroImage: "https://images.unsplash.com/photo-1522337660859-02fbefca4702?q=80&w=2000&auto=format&fit=crop",
+        heroImage: "/s1.webp",
         description: "A multi-faceted approach to combat thinning hair. This therapy pairs PRP with advanced laser treatments and targeted nutritional support to awaken dormant follicles and prolong the active growth phase of your hair cycle.",
         benefits: [
             "Comprehensive, multi-modality approach",
@@ -99,7 +99,7 @@ export const TREATMENT_DETAILS: Record<string, any> = {
     "anti-aging": {
         title: "Anti-Aging Therapy",
         subtitle: "Turn back the clock with cutting-edge regenerative medicine.",
-        heroImage: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=2000&auto=format&fit=crop",
+        heroImage: "/s3.jpg",
         description: "Our anti-aging PRP therapy focuses on the deep cellular repair of aging skin. By delivering concentrated growth factors directly into the dermis, we actively reverse signs of aging, restoring volume and elasticity.",
         benefits: [
             "Reduces deep wrinkles and fine lines",
