@@ -32,6 +32,11 @@ const MobileNav = ({ closeNav, showNav }: MobileNavProps) => {
     setOpenDropdown(null);
   }
 
+  const handleClickButton = () => {
+    router.push("/contact");
+    closeNav();
+  }
+
   return (
     <div>
       {/* Overlay */}
@@ -72,7 +77,7 @@ const MobileNav = ({ closeNav, showNav }: MobileNavProps) => {
                 {!hasDropdown && (
                   <Link
                     href={link.href}
-                    onClick={closeNav}
+                    onClick={handleCloseNav}
                   >
                     <p className="relative text-black text-base font-medium capitalize w-fit block after:block after:content-[''] after:absolute after:h-[2px] after:bg-[#B4975E] after:w-full after:scale-x-0 hover:after:scale-x-100 after:transition after:duration-300 after:origin-right after:bottom-[-2] after:left-0">
                       {link.label}
@@ -128,7 +133,7 @@ const MobileNav = ({ closeNav, showNav }: MobileNavProps) => {
 
         {/* Button */}
         <div className="flex items-center gap-5 ml-6">
-          <Button onClick={() => router.push("/contact")}>
+          <Button onClick={handleClickButton}>
             Book Online
           </Button>
         </div>
