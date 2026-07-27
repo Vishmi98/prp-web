@@ -1,3 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+export const JWT_SECRET = "eregr5trertw56rrgfhtyrt5tfasrgt235346346ffgsdfgdfsg4dfefsdrwef"
+
+export const MAX_SIZE_MB = 1.1 * 1024 * 1024;
+
 export const NAV_ITEMS = [
     { label: "About", href: "/about" },
 

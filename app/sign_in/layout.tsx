@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display, Poppins } from "next/font/google";
 
-import "./globals.css";
-import ResponsiveNav from "@/components/navbar/ResponsiveNav";
-import Footer from "@/components/Footer";
-import ScrollToTop from "@/components/ScrollToTop";
+import "../globals.css";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -16,7 +13,7 @@ const playfair = Playfair_Display({
   variable: "--font-playfair",
 });
 
-const poppin = Poppins({
+const poppins = Poppins({
   subsets: ["latin"],
   variable: "--font-poppins",
   weight: ["300", "400", "500", "600", "700", "800"],
@@ -33,12 +30,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${playfair.variable} ${poppin.variable}`}>
-      <body>
-        <ResponsiveNav />
+    <html lang="en" className={`${inter.variable} ${playfair.variable} ${poppins.variable}`}>
+      <body
+        className={`antialiased bg-gray-100`}
+      >
         {children}
-        <Footer />
-        <ScrollToTop />
       </body>
     </html>
   );
