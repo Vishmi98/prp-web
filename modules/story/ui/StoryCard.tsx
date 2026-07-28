@@ -13,7 +13,7 @@ interface StoryCardProps {
 
 const StoryCard: React.FC<StoryCardProps> = ({ story }) => {
     return (
-        <div className="min-w-[100%] md:min-w-[calc(50%-16px)] lg:min-w-[calc(33.333%-21.33px)] snap-start bg-gray-50 border border-gray-100 p-8 hover:shadow-xl transition-all duration-300 group rounded-sm flex flex-col">
+        <div className="snap-start shrink-0 w-full md:w-[calc((100%-2.5rem)/3)] bg-gray-50 border border-gray-100 p-8 hover:shadow-xl transition-all duration-300 group rounded-sm flex flex-col">
             {/* Stars */}
             <div className="flex gap-1 mb-6 text-[#D4AF37]">
                 {[...Array(story.rating || 5)].map((_, i) => (

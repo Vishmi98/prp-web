@@ -13,7 +13,7 @@ const BlogOverview = ({ blog }: Props) => {
         <article className="bg-white">
 
             {/* Hero */}
-            <section className="pt-30 md:pt-32 pb-10 md:pb-16">
+            <section className="pt-28 md:pt-32 pb-10 md:pb-16">
                 <div className="w-[90%] xl:w-[75%] mx-auto">
                     <Link
                         href="/blogs"
@@ -38,7 +38,7 @@ const BlogOverview = ({ blog }: Props) => {
             <section>
                 <div className="w-[90%] xl:w-[75%] mx-auto">
 
-                    <div className="relative w-full aspect-[16/7] rounded-xl md:rounded-3xl overflow-hidden shadow-xl">
+                    <div className="relative w-full aspect-[14/7] md:aspect-[16/7] rounded-xl md:rounded-3xl overflow-hidden shadow-xl">
 
                         <Image
                             src={blog.coverImagePath}
@@ -60,7 +60,7 @@ const BlogOverview = ({ blog }: Props) => {
                     <div
                         className="
                         md:leading-8
-                        text-md
+                        text-sm
                         md:text-lg
                         space-y-8
                     "
