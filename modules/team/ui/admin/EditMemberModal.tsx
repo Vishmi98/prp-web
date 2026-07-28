@@ -84,7 +84,7 @@ const EditMemberModal: React.FC<EditMemberModalProps> = ({ isOpen, onClose, init
                 toast.error(response.message);
             }
         } catch (error) {
-            toast.error("An error occurred while adding the member.");
+            toast.error("An error occurred while updating the member.");
             console.error(error);
         } finally {
             setSubmitting(false);

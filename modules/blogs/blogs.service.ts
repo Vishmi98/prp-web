@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { BlogsResponseDataType, BlogsResponseType, PublishBlogResponseDataType } from "./blogs.types";
+import { BlogsResponseDataType, BlogsResponseType, PublishBlogResponseDataType, SingleBlogResponseDataType, SingleBlogResponseType } from "./blogs.types";
 
 import apiCall from "@/services/api.services";
 import { URL } from "@/constants/config";
@@ -70,4 +70,20 @@ export const updateBlog = async (data: FormData) => {
             blog: response.data,
         },
     };
+};
+
+export const getBlogByUrl = async (props: { url: string }): Promise<SingleBlogResponseType> => {
+    const { url } = props;
+
+    const response: SingleBlogResponseDataType = await apiCall({
+        url: `${URL}/blog/get-by-url`,
+        method: 'POST',
+        body: { url },
+    })
+
+    return ({
+        success: response.success,
+        message: response.message,
+        blog: response.data.blog
+    });
 };

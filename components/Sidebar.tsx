@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 import { FaNotesMedical, FaPenSquare, FaUsers } from 'react-icons/fa'
 import { FiLogOut } from 'react-icons/fi';
 import { HiOutlineMail, HiOutlineSparkles } from 'react-icons/hi';
+import { MdOutlineAutoStories } from 'react-icons/md';
 
 import { handleCleanCookie } from '@/utils/cookie.util';
 import { ProfileLink, SidebarProps } from '@/constants/types';
@@ -20,6 +21,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, setIsOpen }) => {
     { id: 'inquiries', label: "Inquiries", href: '/admin/inquiries', icon: <HiOutlineMail className="h-4 w-4 mr-2" /> },
     { id: 'services', label: "Services", href: '/admin/services', icon: <HiOutlineSparkles className="h-4 w-4 mr-2" /> },
     { id: 'team', label: "Team", href: '/admin/team', icon: <FaUsers className="h-4 w-4 mr-2" /> },
+    { id: 'stories', label: "Success Stories", href: '/admin/stories', icon: <MdOutlineAutoStories className="h-4 w-4 mr-2" /> },
   ];
 
   const handleLogOut = () => {

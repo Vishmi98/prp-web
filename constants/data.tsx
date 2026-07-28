@@ -5,7 +5,7 @@ export const MAX_SIZE_MB = 1.1 * 1024 * 1024;
 
 export const NAV_ITEMS = [
     { label: "About", href: "/about" },
-
+    { label: "Blogs", href: "/blogs" },
     {
         label: "Treatments",
         href: "",

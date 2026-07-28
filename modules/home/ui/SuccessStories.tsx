@@ -1,14 +1,43 @@
 "use client";
 
-import React, { useRef } from "react";
-import Image from "next/image";
-import { BiStar, BiChevronLeft, BiChevronRight } from "react-icons/bi";
+import React, { useEffect, useRef, useState, useCallback } from "react";
+import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 
-import { STORIES } from "@/constants/data";
+import { StoryDataType } from "@/modules/story/story.types";
+import { getStories } from "@/modules/story/story.service";
+import StoryCardSkeleton from "@/modules/story/ui/StoryCardSkeleton";
+import StoryCard from "@/modules/story/ui/StoryCard";
 
 
 const SuccessStories = () => {
     const scrollRef = useRef<HTMLDivElement>(null);
+    const [stories, setStories] = useState<StoryDataType[]>([]);
+    const [isLoading, setIsLoading] = useState<boolean>(true);
+
+    const fetchSuccessStories = useCallback(async () => {
+        setIsLoading(true);
+        try {
+            const response = await getStories(1, 10);
+            if (response.success && response.successStories.length > 0) {
+                // Filter published stories if required on client-side as safety fallback
+                const publishedStories = response.successStories.filter(
+                    (story) => story.isPublish !== false
+                );
+                setStories(publishedStories);
+            } else {
+                setStories([]);
+            }
+        } catch (error) {
+            console.error("Failed to fetch success stories:", error);
+            setStories([]);
+        } finally {
+            setIsLoading(false);
+        }
+    }, []);
+
+    useEffect(() => {
+        fetchSuccessStories();
+    }, [fetchSuccessStories]);
 
     const scroll = (direction: "left" | "right") => {
         if (scrollRef.current) {
@@ -30,7 +59,7 @@ const SuccessStories = () => {
                         <h2 className="text-2xl md:text-3xl font-semibold leading-tight">
                             Join thousands of others who were in the same position as you...
                         </h2>
-                        <p className="mt-4">
+                        <p className="mt-4 text-gray-600">
                             Hear from our clients about their transformative journeys and the confidence they've regained through our specialized PRP treatments.
                         </p>
                     </div>
@@ -39,15 +68,15 @@ const SuccessStories = () => {
                     <div className="flex items-end gap-4">
                         <button
                             onClick={() => scroll("left")}
-                            className="p-2 md:p-3 rounded-full border border-gray-200 hover:bg-gray-100 transition-all duration-300"
-                            aria-label="Previous"
+                            className="p-2 md:p-3 rounded-full border border-gray-200 hover:bg-gray-100 transition-all duration-300 active:scale-95"
+                            aria-label="Previous story"
                         >
                             <BiChevronLeft size={24} />
                         </button>
                         <button
                             onClick={() => scroll("right")}
-                            className="p-2 md:p-3 rounded-full border border-gray-200 hover:bg-gray-100 transition-all duration-300"
-                            aria-label="Next"
+                            className="p-2 md:p-3 rounded-full border border-gray-200 hover:bg-gray-100 transition-all duration-300 active:scale-95"
+                            aria-label="Next story"
                         >
                             <BiChevronRight size={24} />
                         </button>
@@ -57,43 +86,25 @@ const SuccessStories = () => {
                 {/* Carousel Container */}
                 <div
                     ref={scrollRef}
-                    className="flex gap-8 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-8"
-                    style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+                    className="flex gap-5 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-8"
+                    style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
                 >
-                    {STORIES.map((story, index) => (
-                        <div
-                            key={index}
-                            className="min-w-[100%] md:min-w-[calc(50%-16px)] lg:min-w-[calc(33.333%-21.33px)] snap-start bg-gray-50 border border-gray-100 p-8 hover:shadow-xl transition-all duration-300 group rounded-sm flex flex-col"
-                        >
-                            {/* Stars */}
-                            <div className="flex gap-1 mb-6 text-[#D4AF37]">
-                                {[...Array(story.rating)].map((_, i) => (
-                                    <BiStar key={i} size={18} fill="currentColor" />
-                                ))}
-                            </div>
-
-                            {/* Text */}
-                            <p className="text-gray-700 mb-8 text-sm md:text-base leading-relaxed line-clamp-4 transition-all flex-grow">
-                                {story.text}
-                            </p>
-
-                            {/* Author */}
-                            <div className="flex items-center gap-4 mt-auto">
-                                <div className="relative md:w-12 md:h-12 w-10 h-10 rounded-full overflow-hidden shrink-0">
-                                    <Image
-                                        src={story.image}
-                                        alt={story.name}
-                                        fill
-                                        className="object-cover"
-                                    />
-                                </div>
-                                <div>
-                                    <h4 className="font-semibold md:text-lg">{story.name}</h4>
-                                    <p className="text-xs md:text-sm text-gray-500">{story.treatment}</p>
-                                </div>
-                            </div>
+                    {isLoading ? (
+                        // Render 3 Skeletons while fetching
+                        Array.from({ length: 3 }).map((_, index) => (
+                            <StoryCardSkeleton key={index} />
+                        ))
+                    ) : stories.length > 0 ? (
+                        // Render dynamic API stories
+                        stories.map((story) => (
+                            <StoryCard key={story.id} story={story} />
+                        ))
+                    ) : (
+                        // Empty state fallback
+                        <div className="w-full py-12 text-center text-gray-500">
+                            No stories available at the moment.
                         </div>
-                    ))}
+                    )}
                 </div>
             </div>
         </section>

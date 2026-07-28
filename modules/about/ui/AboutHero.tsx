@@ -15,10 +15,11 @@ const AboutHero = () => {
                         <div className="inline-block px-4 py-1.5 rounded-full bg-black/10 text-black font-semibold text-xs mb-6 border border-blacl/20">
                             About Our Clinic
                         </div>
-                        <h1 className="text-3xl md:text-4xl font-semibold leading-tight">
-                            Elevating Aesthetics through Science
+                        <h1 className="text-3xl md:text-5xl font-semibold leading-tight mb-6">
+                            Elevating Aesthetics
+                            <span className="text-gold"> Through Science</span>
                         </h1>
-                        <p className="text-gray-600 text-sm md:text-base leading-relaxed mb-8 max-w-xl">
+                        <p className="text-gray-600 text-sm md:text-base leading-relaxed max-w-xl">
                             We are pioneers in advanced PRP (Platelet-Rich Plasma) therapies. Our commitment is to deliver natural, long-lasting results for hair restoration and skin rejuvenation in a luxurious, medically-sound environment.
                         </p>
                     </div>

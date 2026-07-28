@@ -87,3 +87,17 @@ export type EditBlogModalProps = {
     reloadData: () => void;
     initialValues: BlogType | null;
 }
+
+export type SingleBlogResponseDataType = {
+    success: boolean;
+    message: string;
+    data: {
+        blog: BlogDataType;
+    };
+}
+
+export type SingleBlogResponseType = {
+    success: boolean;
+    message: string;
+    blog: BlogDataType | null;
+}

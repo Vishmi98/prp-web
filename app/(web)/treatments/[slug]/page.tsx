@@ -9,13 +9,11 @@ export default async function TreatmentPage({ params }: { params: Promise<{ slug
     const { slug } = await params;
 
     if (!slug) {
-        console.log("Product is missing from slug params");
+        console.log("Treatment is missing from slug params");
         return notFound();
     }
 
     const treatmentData = await fetchTreatment(slug);
-
-    console.log("Treatment data", treatmentData);
 
     if (!treatmentData) {
         return notFound();
@@ -23,11 +21,6 @@ export default async function TreatmentPage({ params }: { params: Promise<{ slug
 
     return (
         <main>
-            {/* <TreatmentHero 
-                title={treatmentData.title}
-                subtitle={treatmentData.subtitle}
-                heroImage={treatmentData.heroImage}
-            /> */}
             <TreatmentOverview treatment={treatmentData} />
         </main>
     );
