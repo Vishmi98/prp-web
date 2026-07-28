@@ -1,90 +1,70 @@
 "use client";
 
-import React from "react";
-import Image from "next/image";
-import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
+import React, { useEffect, useState } from "react";
 
-const team = [
-    {
-        name: "Dr. Sarah Williams",
-        role: "PRP Specialist",
-        image: "/d1.jpg",
-    },
-    {
-        name: "Dr. Michael Chen",
-        role: "Dermatologist",
-        image: "/d2.jpg",
-    },
-    {
-        name: "Dr. Emily Brown",
-        role: "Skin Care Expert",
-        image: "/d3.jpg",
-    },
-    {
-        name: "Dr. David Smith",
-        role: "Hair Restoration Expert",
-        image: "/d4.jpg",
-    },
-];
+import { TeamDataType } from "@/modules/team/team.types";
+import { getMembers } from "@/modules/team/team.service";
+import MemberCardSkeleton from "@/modules/team/ui/MemberCardSkeleton";
+import MemberCard from "@/modules/team/ui/MemberCard";
+
 
 const Team = () => {
+    const [members, setMembers] = useState<TeamDataType[]>([]);
+    const [loading, setLoading] = useState<boolean>(true);
+
+    useEffect(() => {
+        const fetchMembers = async () => {
+            try {
+                setLoading(true);
+                // Request limit set to 4 to match original grid layout
+                const data = await getMembers(1, 4);
+
+                if (data.success) {
+                    // Filter out unpublished members if required
+                    const publishedMembers = data.teamMembers.filter(
+                        (member) => member.isPublish !== false
+                    );
+                    setMembers(publishedMembers);
+                }
+            } catch (error) {
+                console.error("Failed to fetch team members:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchMembers();
+    }, []);
+
     return (
         <section className="py-20 text-black">
             <div className="w-[90%] xl:w-[85%] mx-auto flex flex-col md:flex-row md:gap-10">
-
                 {/* Heading */}
                 <div className="text-start mb-14 w-full md:w-[35%]">
                     <h2 className="text-2xl md:text-3xl font-semibold leading-tight">
                         Meet Our Experts For Your Better Results.
                     </h2>
-                    <p className="mt-4 max-w-2xl mx-auto text-gray-600 text-sm md:text-base">
-                        Our experienced medical professionals ensure safe,
-                        effective, and personalized PRP treatments.
+                    <p className="mt-4 max-w-2xl text-gray-600 text-sm md:text-base">
+                        Our experienced medical professionals ensure safe, effective, and
+                        personalized PRP treatments.
                     </p>
                 </div>
 
                 {/* Grid */}
-                <div className="grid grid-cols-2 gap-10 w-full md:w-[65%] md:px-5">
-
-                    {team.map((member, index) => (
-                        <div
-                            key={index}
-                            className="group overflow-hidden hover:scale-[1.03] transition duration-300"
-                        >
-                            {/* Image */}
-                            <div className="relative h-48 md:h-65 w-full overflow-hidden">
-                                <Image
-                                    src={member.image}
-                                    alt={member.name}
-                                    fill
-                                    className="object-cover group-hover:scale-110 transition duration-500 object-top"
-                                />
-
-                                {/* Overlay Social Icons */}
-                                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition flex items-center justify-center gap-4">
-                                    <div className="bg-white text-black p-2 rounded-full cursor-pointer hover:bg-black hover:text-white">
-                                        <FaFacebookF size={14} />
-                                    </div>
-                                    <div className="bg-white text-black p-2 rounded-full cursor-pointer hover:bg-black hover:text-white">
-                                        <FaInstagram size={14} />
-                                    </div>
-                                    <div className="bg-white text-black p-2 rounded-full cursor-pointer hover:bg-black hover:text-white">
-                                        <FaLinkedinIn size={14} />
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Info */}
-                            <div className="py-3 text-start">
-                                <h3 className="text-base md:text-lg font-semibold">
-                                    {member.name}
-                                </h3>
-                                <p className="text-gray-400 text-sm mt-1">
-                                    {member.role}
-                                </p>
-                            </div>
+                <div className="grid grid-cols-2 gap-5 md:gap-10 w-full md:w-[65%] md:px-5">
+                    {loading ? (
+                        Array.from({ length: 4 }).map((_, index) => (
+                            <MemberCardSkeleton key={index} />
+                        ))
+                    ) : members.length > 0 ? (
+                        members.map((member) => (
+                            <MemberCard key={member.id} member={member} />
+                        ))
+                    ) : (
+                        <div className="col-span-full text-center py-10 text-gray-500">
+                            No team members found.
                         </div>
-                    ))}
+                    )}
                 </div>
             </div>
         </section>

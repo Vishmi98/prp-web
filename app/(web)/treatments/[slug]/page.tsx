@@ -1,17 +1,24 @@
 import React from 'react';
 import { notFound } from 'next/navigation';
-import { TREATMENT_DETAILS } from '@/constants/data';
-import TreatmentHero from '@/modules/treatments/ui/TreatmentHero';
+
 import TreatmentOverview from '@/modules/treatments/ui/TreatmentOverview';
+import { fetchTreatment } from '@/lib/fetchData';
 
-export default async function TreatmentPage(props: { params: Promise<{ slug: string }> }) {
-    const params = await props.params;
-    const slug = params.slug;
 
-    const treatmentData = TREATMENT_DETAILS[slug];
+export default async function TreatmentPage({ params }: { params: Promise<{ slug: string }> }) {
+    const { slug } = await params;
+
+    if (!slug) {
+        console.log("Product is missing from slug params");
+        return notFound();
+    }
+
+    const treatmentData = await fetchTreatment(slug);
+
+    console.log("Treatment data", treatmentData);
 
     if (!treatmentData) {
-        notFound();
+        return notFound();
     }
 
     return (
@@ -21,13 +28,7 @@ export default async function TreatmentPage(props: { params: Promise<{ slug: str
                 subtitle={treatmentData.subtitle}
                 heroImage={treatmentData.heroImage}
             /> */}
-            <TreatmentOverview
-                title={treatmentData.title}
-                description={treatmentData.description}
-                benefits={treatmentData.benefits}
-                heroImage={treatmentData.heroImage}
-                procedureDetails={treatmentData.procedureDetails}
-            />
+            <TreatmentOverview treatment={treatmentData} />
         </main>
     );
 }

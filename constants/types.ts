@@ -75,3 +75,9 @@ export type AddModalProps = {
     onClose: () => void;
     handleReload: () => void;
 }
+
+export interface NavItemDataType {
+  label: string;
+  href: string;
+  dropdown?: { label: string; href: string }[];
+}

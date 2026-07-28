@@ -14,6 +14,7 @@ const teamSchema = new mongoose.Schema(
             instagram: { type: String, default: "" },
             facebook: { type: String, default: "" },
         },
+        isPublish: { type: Boolean, default: false },
     },
     { timestamps: true }
 );

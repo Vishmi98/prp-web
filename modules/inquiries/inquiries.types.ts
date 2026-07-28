@@ -7,7 +7,7 @@ export interface InquiryDataType {
     message: string;
 }
 
-export interface InquiryType {
+export type InquiryType = {
     firstName: string;
     lastName: string;
     email: string;

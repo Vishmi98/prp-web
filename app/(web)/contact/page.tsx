@@ -12,6 +12,7 @@ import {
 
 import Button from "@/components/Button";
 import { FAQ_DATA } from "@/constants/data";
+import { InquiryForm } from "@/modules/inquiries/ui/InquiryForm";
 
 
 const ContactPage = () => {
@@ -150,92 +151,7 @@ const ContactPage = () => {
                     </div>
 
                     {/* Contact Form */}
-                    <div className=" bg-white rounded-lg p-5 md:p-8">
-
-                        <div className="mb-10">
-                            <p className="uppercase tracking-[4px] text-gold font-medium mb-2">
-                                Send Message
-                            </p>
-
-                            <h2 className="text-3xl md:text-4xl font-semibold text-black">
-                                Contact Us
-                            </h2>
-                        </div>
-
-                        <form className="md:space-y-7 space-y-5">
-
-                            {/* Name */}
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-
-                                <div>
-                                    <label className="text-xs uppercase tracking-[3px] text-gray-500 block mb-1 font-medium">
-                                        First Name
-                                    </label>
-
-                                    <input
-                                        type="text"
-                                        className="w-full py-3 px-5 rounded-lg border border-gray-200 focus:outline-none focus:border-[#D4AF37] focus:ring-4 focus:ring-[#D4AF37]/10 transition-all duration-300"
-                                    />
-                                </div>
-
-                                <div>
-                                    <label className="text-xs uppercase tracking-[3px] text-gray-500 block mb-1 font-medium">
-                                        Last Name
-                                    </label>
-
-                                    <input
-                                        type="text"
-                                        className="w-full py-3 px-5 rounded-lg border border-gray-200 focus:outline-none focus:border-[#D4AF37] focus:ring-4 focus:ring-[#D4AF37]/10 transition-all duration-300"
-                                    />
-                                </div>
-                            </div>
-
-                            {/* Email + Phone */}
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-
-                                <div>
-                                    <label className="text-xs uppercase tracking-[3px] text-gray-500 block mb-1 font-medium">
-                                        Email Address
-                                    </label>
-
-                                    <input
-                                        type="email"
-                                        className="w-full py-3 px-5 rounded-lg border border-gray-200 focus:outline-none focus:border-[#D4AF37] focus:ring-4 focus:ring-[#D4AF37]/10 transition-all duration-300"
-                                    />
-                                </div>
-
-                                <div>
-                                    <label className="text-xs uppercase tracking-[3px] text-gray-500 block mb-1 font-medium">
-                                        Phone Number
-                                    </label>
-
-                                    <input
-                                        type="text"
-                                        className="w-full py-3 px-5 rounded-lg border border-gray-200 focus:outline-none focus:border-[#D4AF37] focus:ring-4 focus:ring-[#D4AF37]/10 transition-all duration-300"
-                                    />
-                                </div>
-                            </div>
-
-                            {/* Message */}
-                            <div>
-                                <label className="text-xs uppercase tracking-[3px] text-gray-500 block mb-1 font-medium">
-                                    Message
-                                </label>
-
-                                <textarea
-                                    rows={5}
-                                    placeholder="Tell us about your goals or questions..."
-                                    className="w-full p-5 rounded-xl border border-gray-200 focus:outline-none focus:border-[#D4AF37] focus:ring-4 focus:ring-[#D4AF37]/10 transition-all duration-300 resize-none"
-                                />
-                            </div>
-
-                            <div className="pt-2">
-                                <Button>
-                                    Send Message
-                                </Button>
-                            </div>
-                        </form>
-                    </div>
+                    <InquiryForm />
                 </div>
 
                 {/* FAQ Section */}

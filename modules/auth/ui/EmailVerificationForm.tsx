@@ -45,12 +45,12 @@ const EmailVerificationForm = () => {
                             handleSaveCookieToken(res?.token);
                             handleSaveCookieUser(JSON.stringify(decoded.user));
                             handleRemoveCookieEmail();
-                            toast.success("Login successfully!", { position: "bottom-center", autoClose: 2000 });
+                            toast.success(res.message);
 
                             router.push("/admin/treatments");
                             resetForm();
                         } else {
-                            toast.error("Verification failed. Please try again.");
+                            toast.error(res.message);
                         }
                     } catch (error) {
                         console.error(error);

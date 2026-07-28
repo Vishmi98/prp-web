@@ -9,13 +9,7 @@ export const NAV_ITEMS = [
     {
         label: "Treatments",
         href: "",
-        dropdown: [
-            { label: "PRP Hair Treatment", href: "/treatments/prp-hair" },
-            { label: "PRP Facial", href: "/treatments/prp-facial" },
-            { label: "Skin Rejuvenation", href: "/treatments/skin-rejuvenation" },
-            { label: "Hair Regrowth Therapy", href: "/treatments/hair-regrowth" },
-            { label: "Anti Aging Therapy", href: "/treatments/anti-aging" },
-        ],
+        dropdown: [],
     },
 
     { label: "Contact", href: "/contact" },

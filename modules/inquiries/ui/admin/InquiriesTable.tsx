@@ -107,7 +107,7 @@ const InquiriesTable: React.FC<TableProps> = ({ reload }) => {
         columns={columns}
         data={inquiries}
         isLoading={isLoading}
-        expandable
+        expandable={false}
         page={page}
         limit={limit}
         totalRows={totalRows}

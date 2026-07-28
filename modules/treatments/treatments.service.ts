@@ -1,9 +1,9 @@
 import axios from "axios";
 
+import { PublishTreatmentResponseDataType, SingleTreatmentResponseDataType, SingleTreatmentResponseType, TreatmentResultsResponseDataType, TreatmentResultsResponseType, TreatmentsResponseDataType, TreatmentsResponseType } from "./treatments.types";
 
 import apiCall from "@/services/api.services";
 import { URL } from "@/constants/config";
-import { PublishTreatmentResponseDataType, TreatmentsResponseDataType, TreatmentsResponseType } from "./treatments.types";
 
 
 export const getTreatments = async (page?: number, limit?: number): Promise<TreatmentsResponseDataType> => {
@@ -86,4 +86,35 @@ export const addResults = async (data: FormData) => {
             treatment: response.data,
         },
     };
+};
+
+export const getTreatmentResults = async (): Promise<TreatmentResultsResponseDataType> => {
+    const response: TreatmentResultsResponseType = await apiCall({
+        url: `${URL}/treatment/get-results`, // Adjust API route URL if needed
+        method: "POST",
+    });
+
+    const data = response.data || {};
+
+    return {
+        success: response.success ?? false,
+        message: response.message || "No message provided",
+        results: data.results || [],
+    };
+};
+
+export const getTreatmentBySlug = async (props: { slug: string }): Promise<SingleTreatmentResponseType> => {
+    const { slug } = props;
+
+    const response: SingleTreatmentResponseDataType = await apiCall({
+        url: `${URL}/treatment/get-by-slug`,
+        method: 'POST',
+        body: { slug },
+    })
+
+    return ({
+        success: response.success,
+        message: response.message,
+        treatment: response.data.treatment
+    });
 };

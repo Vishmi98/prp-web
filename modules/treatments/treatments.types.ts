@@ -103,3 +103,39 @@ export interface AddTreatmentResultModalProps {
     treatment: TreatmentDataType;
     reload: () => void;
 }
+
+export interface TreatmentResultItemType extends BeforeAfterType {
+    title: string;
+}
+
+export type TreatmentResultsResponseDataType = {
+    success: boolean;
+    message: string;
+    results: TreatmentResultItemType[];
+};
+
+export type TreatmentResultsResponseType = {
+    success: boolean;
+    message: string;
+    data: {
+        results: TreatmentResultItemType[];
+    };
+};
+
+export type SingleTreatmentResponseDataType = {
+    success: boolean;
+    message: string;
+    data: {
+        treatment: TreatmentDataType;
+    };
+}
+
+export type SingleTreatmentResponseType = {
+    success: boolean;
+    message: string;
+    treatment: TreatmentDataType | null;
+}
+
+export type TreatmentDetailsProps = {
+    treatment: TreatmentDataType
+}

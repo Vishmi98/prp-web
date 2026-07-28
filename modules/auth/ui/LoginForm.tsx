@@ -3,7 +3,6 @@
 import React from 'react';
 import { useRouter } from 'next/navigation';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
-import Image from 'next/image';
 import { toast } from 'react-toastify';
 
 import { LoginFormType } from '../auth.types';
@@ -22,10 +21,11 @@ const LoginForm = () => {
             const res = await handleUserLogin(values);
             if (res.success && res?.email) {
                 handleSaveCookieEmail(res?.email);
+                toast.success(res.message)
                 router.push("/verify_email");
                 resetForm();
             } else {
-                toast.error("Login failed");
+                toast.error(res.message);
             }
         } catch (error) {
             console.error("Error login user:", error);

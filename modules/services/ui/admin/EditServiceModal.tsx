@@ -91,7 +91,7 @@ const EditServiceModal: React.FC<EditServiceModalProps> = ({ isOpen, onClose, in
         <div onClick={onClose} className="fixed inset-0 z-50 bg-black/40 flex items-center justify-center cursor-pointer">
             <div onClick={(e) => e.stopPropagation()} className="bg-white rounded-lg w-full max-w-xl max-h-[90vh] overflow-hidden flex flex-col mx-3">
                 <div className="flex justify-between items-center p-4">
-                    <h2 className="font-semibold">Edit New Service</h2>
+                    <h2 className="font-semibold">Edit Service</h2>
                     <CgClose className="w-4 h-4 cursor-pointer" onClick={onClose} />
                 </div>
 

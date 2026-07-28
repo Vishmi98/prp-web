@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React from "react";
 import Image from "next/image";
@@ -10,37 +10,29 @@ import {
     BiLeaf,
     BiCheckSquare,
     BiWallet,
+    BiListOl,
 } from "react-icons/bi";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
+import { TreatmentDetailsProps } from "../treatments.types";
+
 import Button from "@/components/Button";
-import { RESULTS_DATA } from "@/constants/data";
 
 
-interface ProcedureDetails {
-    duration: string;
-    downtime: string;
-    painLevel: string;
-    image: string;
-}
-
-interface TreatmentOverviewProps {
-    title: string;
-    description: string;
-    benefits: string[];
-    heroImage: string;
-    procedureDetails: ProcedureDetails;
-}
-
-const TreatmentOverview = ({
-    title,
-    description,
-    benefits,
-    heroImage,
-    procedureDetails,
-}: TreatmentOverviewProps) => {
+const TreatmentOverview = ({ treatment }: TreatmentDetailsProps) => {
     const router = useRouter();
+
+    const {
+        title,
+        description,
+        shortDescription,
+        benefits = [],
+        procedureSteps = [],
+        results = [],
+        thumbnailImagePath,
+        overview,
+    } = treatment;
 
     const responsive = {
         desktop: {
@@ -49,7 +41,7 @@ const TreatmentOverview = ({
         },
         tablet: {
             breakpoint: { max: 1024, min: 768 },
-            items: 1,
+            items: 2,
         },
         mobile: {
             breakpoint: { max: 768, min: 0 },
@@ -59,21 +51,17 @@ const TreatmentOverview = ({
 
     return (
         <>
-            <section className="py-20 lg:py-28 bg-[#FAFAF8] text-black relative mt-10 overflow-hidden">
-
+            <section className="pt-20 lg:pt-28 pb-10 lg:pb-18 bg-[#FAFAF8] text-black relative mt-10 overflow-hidden">
                 {/* Background Blur */}
                 <div className="absolute top-0 left-0 w-72 h-72 bg-[#D4AF37]/10 blur-3xl rounded-full" />
                 <div className="absolute bottom-0 right-0 w-72 h-72 bg-black/5 blur-3xl rounded-full" />
 
                 <div className="relative z-10 w-[90%] xl:w-[85%] mx-auto">
-
                     {/* Top Section */}
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-start">
-
                         {/* Left Content */}
                         <div>
-
-                            <p className="uppercase tracking-[4px] text-[#D4AF37] text-sm font-medium mb-4">
+                            <p className="uppercase tracking-[4px] text-gold text-sm font-medium mb-4">
                                 {title}
                             </p>
 
@@ -81,55 +69,58 @@ const TreatmentOverview = ({
                                 About {title}
                             </h2>
 
-                            <p className="text-gray-600 leading-relaxed">
-                                {description}
-                            </p>
+                            <p className="text-gray-600 leading-relaxed">{description}</p>
 
-                            <p className="text-gray-600 leading-relaxed mt-6">
-                                Our advanced regenerative treatments are designed
-                                to naturally stimulate healing, collagen production,
-                                and long-term rejuvenation with minimal downtime.
-                                Every procedure is personalized to enhance your
-                                confidence while maintaining natural-looking results.
-                            </p>
+                            {shortDescription && (
+                                <p className="text-gray-600 leading-relaxed mt-4 italic">
+                                    {shortDescription}
+                                </p>
+                            )}
 
                             {/* Benefits */}
-                            <div className="mt-12">
-                                <h3 className="text-2xl font-semibold mb-8">
-                                    Key Benefits
-                                </h3>
+                            {benefits.length > 0 && (
+                                <div className="mt-12">
+                                    <h3 className="text-2xl font-semibold mb-8">Key Benefits</h3>
 
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-5">
-                                    {benefits.map((benefit, index) => (
-                                        <div
-                                            key={index}
-                                            className="flex items-start gap-4 bg-white border border-gray-100 rounded-lg p-3 shadow-sm hover:shadow-md transition-all duration-300"
-                                        >
-                                            <div className="w-10 h-10 rounded-full bg-[#D4AF37]/10 flex items-center justify-center shrink-0">
-                                                <BiCheckCircle
-                                                    className="text-[#D4AF37]"
-                                                    size={22}
-                                                />
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-5">
+                                        {benefits.map((benefit, index) => (
+                                            <div
+                                                key={index}
+                                                className="flex items-start gap-4 bg-white border border-gray-100 rounded-lg p-3 shadow-sm hover:shadow-md transition-all duration-300"
+                                            >
+                                                <div className="w-10 h-10 rounded-full bg-[#D4AF37]/10 flex items-center justify-center shrink-0">
+                                                    <BiCheckCircle
+                                                        className="text-gold"
+                                                        size={22}
+                                                    />
+                                                </div>
+
+                                                <p className="text-gray-700 leading-relaxed text-sm">
+                                                    {benefit}
+                                                </p>
                                             </div>
-
-                                            <p className="text-gray-700 leading-relaxed">
-                                                {benefit}
-                                            </p>
-                                        </div>
-                                    ))}
+                                        ))}
+                                    </div>
                                 </div>
-                            </div>
+                            )}
                         </div>
 
                         {/* Right Image */}
                         <div className="relative">
-                            <div className="relative h-[420px] md:h-[620px] rounded-lg overflow-hidden shadow-lg">
-                                <Image
-                                    src={heroImage}
-                                    alt={title}
-                                    fill
-                                    className="object-cover"
-                                />
+                            <div className="relative h-[380px] md:h-[600px] rounded-lg overflow-hidden shadow-lg bg-gray-100">
+                                {thumbnailImagePath ? (
+                                    <Image
+                                        src={thumbnailImagePath}
+                                        alt={title}
+                                        fill
+                                        className="object-cover"
+                                        priority
+                                    />
+                                ) : (
+                                    <div className="flex items-center justify-center h-full text-gray-400">
+                                        No image available
+                                    </div>
+                                )}
                             </div>
 
                             {/* Floating Card */}
@@ -140,196 +131,223 @@ const TreatmentOverview = ({
                                             Natural Results
                                         </p>
 
-                                        <h4 className="text-xl font-semibold mt-1">
-                                            {title}
-                                        </h4>
+                                        <h4 className="text-xl font-semibold mt-1">{title}</h4>
                                     </div>
 
                                     <div className="w-14 h-14 rounded-full bg-[#D4AF37]/10 flex items-center justify-center">
-                                        <BiPulse
-                                            className="text-[#D4AF37]"
-                                            size={28}
-                                        />
+                                        <BiPulse className="text-gold" size={28} />
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </section>
+
             {/* Before After Slider */}
-            <div className="bg-[#D4AF37]/20 py-20">
-                <div className="w-[90%] xl:w-[85%] mx-auto">
+            {results && results.length > 0 && (
+                <div className="bg-[#D4AF37]/10 py-20">
+                    <div className="w-[90%] xl:w-[85%] mx-auto">
+                        <div className="flex items-center justify-between mb-6">
+                            <div>
+                                <p className="uppercase tracking-[3px] text-gold text-sm mb-2 font-medium">
+                                    Real Client Results
+                                </p>
 
-                    <div className="flex items-center justify-between mb-6">
-                        <div>
-                            <p className="uppercase tracking-[3px] text-[#D4AF37] text-sm mb-2">
-                                Real Client Results
-                            </p>
-
-                            <h3 className="text-3xl font-semibold">
-                                Before & After
-                            </h3>
+                                <h3 className="text-3xl font-semibold">Before & After</h3>
+                            </div>
                         </div>
-                    </div>
 
-                    <Carousel
-                        responsive={responsive}
-                        infinite
-                        autoPlay
-                        autoPlaySpeed={4000}
-                        arrows={false}
-                        showDots
-                        swipeable
-                        draggable
-                    >
-                        {RESULTS_DATA.map((item, index) => (
-                            <div
-                                key={index}
-                                className="overflow-hidden mx-2"
-                            >
-                                <div className="grid grid-cols-2">
-
-                                    {/* Before */}
-                                    <div>
-                                        <div className="relative h-[300px]">
-                                            <Image
-                                                src={item.before}
-                                                alt="Before"
-                                                fill
-                                                className="object-cover"
-                                            />
+                        <Carousel
+                            responsive={responsive}
+                            infinite
+                            autoPlay
+                            autoPlaySpeed={4000}
+                            arrows={false}
+                            showDots
+                            swipeable
+                            draggable
+                        >
+                            {results.map((item, index) => (
+                                <div key={index} className="overflow-hidden md:mx-2 rounded-lg shadow-sm bg-white">
+                                    <div className="grid grid-cols-2">
+                                        {/* Before */}
+                                        <div className="relative border-r border-gray-200">
+                                            <span className="absolute top-2 left-2 z-10 bg-black/60 text-white text-xs px-2 py-1 rounded uppercase tracking-wider">
+                                                Before
+                                            </span>
+                                            <div className="relative h-[250px] md:h-[280px]">
+                                                <Image
+                                                    src={item.beforeImagePath}
+                                                    alt="Before Treatment"
+                                                    fill
+                                                    className="object-cover"
+                                                />
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    {/* After */}
-                                    <div>
-                                        <div className="relative h-[300px]">
-                                            <Image
-                                                src={item.after}
-                                                alt="After"
-                                                fill
-                                                className="object-cover"
-                                            />
+                                        {/* After */}
+                                        <div className="relative">
+                                            <span className="absolute top-2 left-2 z-10 bg-[#D4AF37] text-white text-xs px-2 py-1 rounded uppercase tracking-wider font-medium">
+                                                After
+                                            </span>
+                                            <div className="relative h-[250px] md:h-[280px]">
+                                                <Image
+                                                    src={item.afterImagePath}
+                                                    alt="After Treatment"
+                                                    fill
+                                                    className="object-cover"
+                                                />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        ))}
-                    </Carousel>
+                            ))}
+                        </Carousel>
+                    </div>
                 </div>
-            </div>
+            )}
+
             {/* Bottom Section */}
             <div className="bg-white py-20 w-[90%] xl:w-[85%] mx-auto">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-
-                    <div className="space-y-4">
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente amet dicta sit laborum minima cumque iusto minus ratione, adipisci illum corporis porro inventore eaque deserunt obcaecati, ducimus accusamus quibusdam nostrum saepe! Illo, reiciendis distinctio ipsa accusamus libero officia? Vero nostrum voluptatibus quaerat dolorem. Maiores unde laborum error soluta vitae delectus deleniti! Saepe incidunt dolor perspiciatis quasi asperiores dolores hic fugiat.
-                        </p>
-
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti consequatur perspiciatis sapiente alias quibusdam, eveniet, sed nihil similique itaque fugit, blanditiis consectetur totam laudantium explicabo quae in hic! Nostrum quasi laudantium nobis suscipit voluptas hic perspiciatis consequuntur atque. Commodi error soluta architecto earum temporibus dolor veritatis ipsa beatae. Quia, ducimus mollitia nemo nobis totam consectetur voluptatem officiis accusantium aspernatur assumenda aut debitis corrupti laboriosam hic recusandae animi saepe voluptates dolorum.
-
-                        </p>
+                    {/* Procedure Steps */}
+                    <div className="space-y-6">
+                        {procedureSteps.length > 0 && (
+                            <div>
+                                <h3 className="text-2xl md:text-3xl font-semibold mb-6 flex items-center gap-2">
+                                    <BiListOl className="text-gold" /> Procedure Steps
+                                </h3>
+                                <div className="space-y-3">
+                                    {procedureSteps.map((step, idx) => (
+                                        <div
+                                            key={idx}
+                                            className="flex items-center gap-4 p-4 border border-gray-100 rounded-lg bg-[#FAFAF8]"
+                                        >
+                                            <span className="w-8 h-8 rounded-full bg-[#D4AF37] text-white flex items-center justify-center font-bold shrink-0 text-sm">
+                                                {idx + 1}
+                                            </span>
+                                            <p className="text-gray-700 leading-relaxed mt-0.5">
+                                                {step}
+                                            </p>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
                     </div>
-                    {/* Procedure Details */}
-                    <div className="bg-white text-black rounded-lg p-5 lg:sticky lg:top-32 border border-gray-200">
 
+                    {/* Procedure Details / Overview Card */}
+                    <div className="bg-white text-black rounded-lg p-6 lg:sticky lg:top-32 border border-gray-200 shadow-sm">
                         {/* Heading */}
-                        <div className="mb-5">
+                        <div className="mb-6">
                             <h3 className="text-2xl md:text-3xl font-medium">
-                                Treatments Overview
+                                Treatment Overview
                             </h3>
 
                             <div className="w-full h-[1px] bg-[#D4AF37] mt-4" />
                         </div>
 
                         {/* Details */}
-                        <div className="space-y-8">
-
+                        <div className="space-y-6">
                             {/* Number of Treatments */}
                             <div className="flex items-start gap-4">
-                                <BiLeaf className="text-gray-500 mt-1 shrink-0" size={28} />
+                                <BiLeaf className="text-gray-500 mt-1 shrink-0" size={26} />
 
                                 <div>
-                                    <p className="font-semibold">
+                                    <p className="font-semibold text-sm uppercase tracking-wider text-gray-500">
                                         Number of treatments
                                     </p>
 
-                                    <p className="md:text-xl font-light mt-1">
-                                        6
+                                    <p className="text-lg font-medium text-gray-800 mt-1">
+                                        {overview?.numberOfTreatments ?? 1}
                                     </p>
                                 </div>
                             </div>
 
                             {/* Treatment Time */}
-                            <div className="flex items-start gap-4">
-                                <BiTime className="text-gray-500 mt-1 shrink-0" size={28} />
+                            {overview?.treatmentTime && (
+                                <div className="flex items-start gap-4">
+                                    <BiTime className="text-gray-500 mt-1 shrink-0" size={26} />
 
-                                <div>
-                                    <p className="font-semibold">
-                                        Treatment time
-                                    </p>
+                                    <div>
+                                        <p className="font-semibold text-sm uppercase tracking-wider text-gray-500">
+                                            Treatment time
+                                        </p>
 
-                                    <p className="md:text-xl font-light mt-1">
-                                        {procedureDetails.duration}
-                                    </p>
+                                        <p className="text-lg font-medium text-gray-800 mt-1">
+                                            {overview.treatmentTime}
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
+                            )}
 
                             {/* Recovery Time */}
-                            <div className="flex items-start gap-4">
-                                <BiPulse className="text-gray-500 mt-1 shrink-0" size={28} />
+                            {overview?.recoveryTime && (
+                                <div className="flex items-start gap-4">
+                                    <BiPulse className="text-gray-500 mt-1 shrink-0" size={26} />
 
-                                <div>
-                                    <p className="font-semibold">
-                                        Recovery time
-                                    </p>
+                                    <div>
+                                        <p className="font-semibold text-sm uppercase tracking-wider text-gray-500">
+                                            Recovery time
+                                        </p>
 
-                                    <p className="md:text-xl font-light mt-1">
-                                        {procedureDetails.downtime}
-                                    </p>
+                                        <p className="text-lg font-medium text-gray-800 mt-1">
+                                            {overview.recoveryTime}
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
+                            )}
 
                             {/* Maximum Results */}
-                            <div className="flex items-start gap-4">
-                                <BiCheckSquare className="text-gray-500 mt-1 shrink-0" size={28} />
+                            {overview?.maximumResults && (
+                                <div className="flex items-start gap-4">
+                                    <BiCheckSquare
+                                        className="text-gray-500 mt-1 shrink-0"
+                                        size={26}
+                                    />
 
-                                <div>
-                                    <p className="font-semibold">
-                                        Maximum results
-                                    </p>
+                                    <div>
+                                        <p className="font-semibold text-sm uppercase tracking-wider text-gray-500">
+                                            Maximum results
+                                        </p>
 
-                                    <p className="md:text-xl font-light mt-1">
-                                        Up to 1 year
-                                    </p>
+                                        <p className="text-lg font-medium text-gray-800 mt-1">
+                                            {overview.maximumResults}
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
+                            )}
 
                             {/* Pricing */}
-                            <div className="flex items-start gap-4">
-                                <BiWallet className="text-gray-500 mt-1 shrink-0" size={28} />
+                            {overview?.pricing && (
+                                <div className="flex items-start gap-4">
+                                    <BiWallet
+                                        className="text-gray-500 mt-1 shrink-0"
+                                        size={26}
+                                    />
 
-                                <div>
-                                    <p className="font-semibold">
-                                        Pricing
-                                    </p>
+                                    <div>
+                                        <p className="font-semibold text-sm uppercase tracking-wider text-gray-500">
+                                            Pricing
+                                        </p>
 
-                                    <p className="font-light mt-1 leading-relaxed">
-                                        Premium PRP Treatments from
-                                        <span className="text-[#D4AF37] font-medium ml-1">
-                                            $283
-                                        </span>
-                                    </p>
+                                        <p className="font-light mt-1 leading-relaxed text-gray-800">
+                                            {overview.pricing.description || "Treatments starting from"}
+                                            {overview.pricing.amount !== undefined && (
+                                                <span className="text-gold font-semibold ml-1">
+                                                    {overview.pricing.currency === "USD" ? "$" : `${overview.pricing.currency} `}
+                                                    {overview.pricing.amount}
+                                                </span>
+                                            )}
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
+                            )}
                         </div>
 
                         {/* Button */}
-                        <div className="mt-10">
+                        <div className="mt-8">
                             <Button onClick={() => router.push("/contact")}>
                                 Book Consultation
                             </Button>

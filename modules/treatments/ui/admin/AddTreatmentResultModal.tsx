@@ -121,7 +121,7 @@ const AddTreatmentResultModal: FC<AddTreatmentResultModalProps> = ({
             <div onClick={(e) => e.stopPropagation()} className="flex max-h-[90vh] w-full max-w-lg flex-col rounded-lg bg-white shadow-xl cursor-default">
                 {/* Header */}
                 <div className="flex justify-between items-center p-4">
-                    <h2 className="font-semibold">Add New Treatment Result</h2>
+                    <h2 className="font-semibold">Add Treatment Result</h2>
                     <CgClose className="w-4 h-4 cursor-pointer" onClick={onClose} />
                 </div>
 

@@ -1,4 +1,4 @@
-import { CreateInquiryResponseDataType, CreateInquiryResponseType, InquiriesResponseDataType, InquiriesResponseType } from "./inquiries.types";
+import { CreateInquiryResponseDataType, CreateInquiryResponseType, InquiriesResponseDataType, InquiriesResponseType, InquiryType } from "./inquiries.types";
 
 import apiCall from "@/services/api.services";
 import { URL } from "@/constants/config";
@@ -24,11 +24,11 @@ export const getInquiries = async (page?: number, limit?: number): Promise<Inqui
     };
 };
 
-export const createInquiry = async (title: string): Promise<CreateInquiryResponseDataType> => {
+export const createInquiry = async (body: InquiryType): Promise<CreateInquiryResponseDataType> => {
     const response: CreateInquiryResponseType = await apiCall({
         url: `${URL}/inquiry/create`,
         method: "POST",
-        body: { title },
+        body,
     });
 
     return {
