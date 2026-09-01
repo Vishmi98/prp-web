@@ -125,9 +125,9 @@ const Nav = ({ openNav }: NavProps) => {
                             ? pathname === "/" && activeHash === link.href
                             : pathname === link.href;
 
-                        const isDropdownCategory = link.label === "Treatments";
-                        const hasDropdown =
-                            isDropdownCategory || (link.dropdown && link.dropdown.length > 0);
+                        // AFTER:
+                        const isTreatmentsCategory = link.label === "Treatments";
+                        const hasDropdown = Boolean(link.dropdown && link.dropdown.length > 0) || isTreatmentsCategory;
 
                         return (
                             <div
@@ -175,7 +175,7 @@ const Nav = ({ openNav }: NavProps) => {
                                 {hasDropdown && openDropdown === link.label && (
                                     <div className="absolute top-full left-0 w-64 bg-white shadow-2xl rounded-md border border-gray-200 py-2 overflow-hidden animate-in fade-in zoom-in-95 duration-200">
                                         {/* Render Skeleton Loader if fetching */}
-                                        {isLoading && isDropdownCategory ? (
+                                        {isLoading && isTreatmentsCategory ? (
                                             <div className="px-5 py-2 space-y-3">
                                                 {[1, 2, 3, 4, 5].map((idx) => (
                                                     <div

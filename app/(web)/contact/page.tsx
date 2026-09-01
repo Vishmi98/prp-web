@@ -10,7 +10,6 @@ import {
     FiMinus,
 } from "react-icons/fi";
 
-import Button from "@/components/Button";
 import { FAQ_DATA } from "@/constants/data";
 import { InquiryForm } from "@/modules/inquiries/ui/InquiryForm";
 
@@ -82,7 +81,7 @@ const ContactPage = () => {
                                         </p>
 
                                         <h3 className="text-lg md:text-xl font-semibold text-black">
-                                            +61 412 345 678
+                                            +61 460 351 834
                                         </h3>
                                     </div>
                                 </div>
@@ -96,15 +95,16 @@ const ContactPage = () => {
                                         />
                                     </div>
 
-                                    <div>
+                                    <a
+                                        href="mailto:admin@prp4skinandhair.com.au">
                                         <p className="text-sm uppercase tracking-[2px] text-gray-500 mb-1">
                                             Email
                                         </p>
 
                                         <h3 className="text-lg md:text-xl font-semibold text-black">
-                                            info@auraclinic.com
+                                            admin@prp4skinandhair.com.au
                                         </h3>
-                                    </div>
+                                    </a>
                                 </div>
 
                                 {/* Location */}
@@ -122,7 +122,7 @@ const ContactPage = () => {
                                         </p>
 
                                         <h3 className="text-lg md:text-xl font-semibold text-black">
-                                            Sydney, NSW, Australia
+                                            Victoria, Australia
                                         </h3>
                                     </div>
                                 </div>

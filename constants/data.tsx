@@ -11,8 +11,15 @@ export const NAV_ITEMS = [
         href: "",
         dropdown: [],
     },
-
-    { label: "Contact", href: "/contact" },
+    {
+        label: "Pricing",
+        href: "/pricing", // or keep "" if it should only act as a dropdown trigger
+        dropdown: [
+            { label: "Single Sessions", href: "/pricing/single-sessions" },
+            { label: "Package & Save", href: "/pricing/packages" },
+        ],
+    },
+    { label: "Gift Cards", href: "/gift-cards" },
 ];
 
 export const SERVICES = [

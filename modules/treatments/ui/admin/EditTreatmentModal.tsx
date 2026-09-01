@@ -8,11 +8,11 @@ import { CgClose } from "react-icons/cg";
 import { FiDelete } from "react-icons/fi";
 
 import { EditTreatmentModalProps, TreatmentDataType } from "../../treatments.types";
-import { createTreatment } from "../../treatments.service";
 import { addTreatmentValidationSchema } from "../../treatments.utils";
 
 import { MAX_SIZE_MB } from "@/constants/data";
 import CropModal from "@/components/ImageCropper";
+import { updateTreatment } from "../../treatments.service";
 
 
 const EditTreatmentModal: FC<EditTreatmentModalProps> = ({ isOpen, onClose, initialValues, reloadData }) => {
@@ -58,6 +58,7 @@ const EditTreatmentModal: FC<EditTreatmentModalProps> = ({ isOpen, onClose, init
             setIsLoading(true);
 
             const formData = new FormData();
+            formData.append("treatmentId", String(initialValues.id));
             formData.append("title", values.title);
             formData.append("slug", values.slug);
             formData.append("shortDescription", values.shortDescription);
@@ -80,7 +81,7 @@ const EditTreatmentModal: FC<EditTreatmentModalProps> = ({ isOpen, onClose, init
                 formData.append("coverImage", coverImage);
             }
 
-            const response = await createTreatment(formData);
+            const response = await updateTreatment(formData);
 
             if (response.success) {
                 toast.success(response.message);

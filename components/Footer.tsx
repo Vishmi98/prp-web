@@ -12,10 +12,10 @@ const Footer = () => {
             className="relative w-full text-white px-6 md:px-16 lg:px-24 pt-20 pb-8 bg-black/10"
         >
             {/* Top Section */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-10">
+            <div className="grid grid-cols-2 lg:grid-cols-7 gap-10">
 
                 {/* Logo + About */}
-                <div>
+                <div className="col-span-2">
                     <Link href="/" className="flex flex-col leading-tight">
                         <span className="font-playfair text-2xl md:text-4xl font-semibold bg-black bg-clip-text text-transparent">
                             Aura
@@ -58,37 +58,35 @@ const Footer = () => {
                 </div>
 
                 {/* Services */}
-                <div>
+                <div className="col-span-2">
                     <h3 className="text-black font-semibold mb-4 uppercase r">
                         Treatments
                     </h3>
                     <ul className="space-y-2 text-black text-sm">
-                        <li>PRP Hair Treatment</li>
-                        <li>PRP Facial (Vampire Facial)</li>
-                        <li>Skin Rejuvenation</li>
-                        <li>Hair Regrowth Therapy</li>
+                        <li>Platelet-Rich Fibrin (PRF) Therapy</li>
+                        <li>Platelet-Rich Plasma (PRP) Therapy</li>
                     </ul>
                 </div>
 
                 {/* Contact */}
-                <div>
+                <div className="col-span-2">
                     <h3 className="text-black font-semibold mb-4 uppercase r">
                         Contact
                     </h3>
                     <ul className="space-y-3 text-black text-sm">
                         <li className="flex items-center gap-3">
                             <FaMapMarkerAlt />
-                            <span>Sydney, NSW</span>
+                            <span>Victoria, Australia</span>
                         </li>
 
                         <li className="flex items-center gap-3">
                             <FaPhoneAlt />
-                            <span>+61 412 345 678</span>
+                            <span>+61 460 351 834</span>
                         </li>
 
                         <li className="flex items-center gap-3">
                             <FaEnvelope />
-                            <span>info@auraclinic.com</span>
+                            <span>admin@prp4skinandhair.com.au</span>
                         </li>
 
                         <li className="flex items-center gap-3">
