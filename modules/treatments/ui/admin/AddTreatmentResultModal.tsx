@@ -138,14 +138,13 @@ const AddTreatmentResultModal: FC<AddTreatmentResultModalProps> = ({
                                 className="block w-full text-xs text-gray-900 file:mr-3 file:cursor-pointer file:rounded-md file:border file:border-gray-200 file:bg-gray-50 file:px-3 file:py-1.5 file:text-xs file:font-semibold hover:file:bg-gray-100"
                             />
                             {beforePreview && (
-                                <div className="relative mt-2 h-58 w-full overflow-hidden rounded border border-gray-200">
-                                    <Image
-                                        src={beforePreview}
-                                        alt="before preview"
-                                        fill
-                                        className="object-cover"
-                                    />
-                                </div>
+                                <Image
+                                    src={beforePreview}
+                                    alt="before preview"
+                                    width={750}
+                                    height={938}
+                                    className="mt-2"
+                                />
                             )}
                         </div>
 
@@ -159,14 +158,13 @@ const AddTreatmentResultModal: FC<AddTreatmentResultModalProps> = ({
                                 className="block w-full text-xs text-gray-900 file:mr-3 file:cursor-pointer file:rounded-md file:border file:border-gray-200 file:bg-gray-50 file:px-3 file:py-1.5 file:text-xs file:font-semibold hover:file:bg-gray-100"
                             />
                             {afterPreview && (
-                                <div className="relative mt-2 h-58 w-full overflow-hidden rounded border border-gray-200">
-                                    <Image
-                                        src={afterPreview}
-                                        alt="after preview"
-                                        fill
-                                        className="object-cover"
-                                    />
-                                </div>
+                                <Image
+                                    src={afterPreview}
+                                    alt="after preview"
+                                    width={750}
+                                    height={938}
+                                    className="mt-2"
+                                />
                             )}
                         </div>
                     </div>
@@ -199,8 +197,8 @@ const AddTreatmentResultModal: FC<AddTreatmentResultModalProps> = ({
                         imageFile={tempImageFile}
                         onCropComplete={handleCropComplete}
                         onClose={() => setIsCropOpen(false)}
-                        cropWidth={500}
-                        cropHeight={500}
+                        cropWidth={750}
+                        cropHeight={938}
                     />
                 )}
 

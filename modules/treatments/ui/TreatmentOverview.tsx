@@ -170,35 +170,15 @@ const TreatmentOverview = ({ treatment }: TreatmentDetailsProps) => {
                         >
                             {results.map((item, index) => (
                                 <div key={index} className="overflow-hidden md:mx-2 rounded-lg shadow-sm bg-white">
-                                    <div className="grid grid-cols-2">
+                                    <div className="grid grid-cols-1">
                                         {/* Before */}
                                         <div className="relative border-r border-gray-200">
-                                            <span className="absolute top-2 left-2 z-10 bg-black/60 text-white text-xs px-2 py-1 rounded uppercase tracking-wider">
-                                                Before
-                                            </span>
-                                            <div className="relative h-[250px] md:h-[280px]">
-                                                <Image
-                                                    src={item.beforeImagePath}
-                                                    alt="Before Treatment"
-                                                    fill
-                                                    className="object-cover"
-                                                />
-                                            </div>
-                                        </div>
-
-                                        {/* After */}
-                                        <div className="relative">
-                                            <span className="absolute top-2 left-2 z-10 bg-[#D4AF37] text-white text-xs px-2 py-1 rounded uppercase tracking-wider font-medium">
-                                                After
-                                            </span>
-                                            <div className="relative h-[250px] md:h-[280px]">
-                                                <Image
-                                                    src={item.afterImagePath}
-                                                    alt="After Treatment"
-                                                    fill
-                                                    className="object-cover"
-                                                />
-                                            </div>
+                                            <Image
+                                                src={item.beforeImagePath}
+                                                alt="Before Treatment"
+                                                width={750}
+                                                height={938}
+                                            />
                                         </div>
                                     </div>
                                 </div>

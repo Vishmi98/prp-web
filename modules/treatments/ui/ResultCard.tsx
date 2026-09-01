@@ -19,34 +19,13 @@ export const ResultCard: React.FC<ResultCardProps> = ({ item }) => {
             </div>
 
             {/* Images */}
-            <div className="grid grid-cols-2 gap-1">
-                {/* Before */}
-                <div className="relative h-60 w-full bg-gray-200">
-                    <Image
-                        src={item.beforeImagePath}
-                        alt={`${item.title} - Before`}
-                        fill
-                        sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
-                        className="object-cover"
-                    />
-                    <span className="absolute bottom-2 left-2 bg-black/60 text-white text-xs px-2 py-1 rounded backdrop-blur-sm">
-                        Before
-                    </span>
-                </div>
-
-                {/* After */}
-                <div className="relative h-60 w-full bg-gray-200">
-                    <Image
-                        src={item.afterImagePath}
-                        alt={`${item.title} - After`}
-                        fill
-                        sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
-                        className="object-cover"
-                    />
-                    <span className="absolute bottom-2 right-2 bg-black/60 text-white text-xs px-2 py-1 rounded backdrop-blur-sm">
-                        After
-                    </span>
-                </div>
+            <div className="grid grid-cols-1 gap-1">
+                <Image
+                    src={item.beforeImagePath}
+                    alt="Before Treatment"
+                    width={750}
+                    height={938}
+                />
             </div>
         </div>
     );

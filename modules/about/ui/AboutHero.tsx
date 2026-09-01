@@ -34,26 +34,30 @@ const AboutHero = () => {
 
                             <div className="space-y-6">
                                 {/* Phone */}
-                                <div className="flex items-start gap-4">
+                                <a
+                                    href="tel:+61460351834"
+                                    className="flex items-start gap-4">
                                     <div className="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center text-gold shrink-0 mt-1">
                                         <BiPhoneCall size={20} />
                                     </div>
                                     <div>
                                         <p className="text-sm text-gray-500 font-medium">Call Us</p>
-                                        <p className="text-lg font-semibold text-gray-900">+1 (555) 123-4567</p>
+                                        <p className="text-lg font-semibold text-gray-900">+61 460 351 834</p>
                                     </div>
-                                </div>
+                                </a>
 
                                 {/* Email */}
-                                <div className="flex items-start gap-4">
+                                <a
+                                    href="mailto:admin@prp4skinandhair.com.au"
+                                    className="flex items-start gap-4">
                                     <div className="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center text-gold shrink-0 mt-1">
                                         <BiEnvelope size={20} />
                                     </div>
                                     <div>
                                         <p className="text-sm text-gray-500 font-medium">Email Us</p>
-                                        <p className="text-lg font-semibold text-gray-900">booking@prpclinic.com</p>
+                                        <p className="text-lg font-semibold text-gray-900">admin@prp4skinandhair.com.au</p>
                                     </div>
-                                </div>
+                                </a>
 
                                 {/* Location */}
                                 <div className="flex items-start gap-4">
@@ -63,8 +67,7 @@ const AboutHero = () => {
                                     <div>
                                         <p className="text-sm text-gray-500 font-medium">Location</p>
                                         <p className="text-base font-semibold text-gray-900 leading-snug">
-                                            123 Aesthetic Avenue,<br />
-                                            Beverly Hills, CA 90210
+                                            Victoria, Australia
                                         </p>
                                     </div>
                                 </div>
