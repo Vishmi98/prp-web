@@ -319,8 +319,8 @@ const AddTreatmentModal: FC<AddModalProps> = ({ isOpen, onClose, handleReload })
                                     imageFile={tempImageFile}
                                     onCropComplete={handleCropComplete}
                                     onClose={() => setIsCropOpen(false)}
-                                    cropWidth={cropFor === "thumbnail" ? 320 : 1800}
-                                    cropHeight={cropFor === "thumbnail" ? 350 : 900}
+                                    cropWidth={cropFor === "thumbnail" ? 500 : 1800}
+                                    cropHeight={cropFor === "thumbnail" ? 600 : 900}
                                 />
                             )}
                             <div className="flex justify-end space-x-2 p-4">

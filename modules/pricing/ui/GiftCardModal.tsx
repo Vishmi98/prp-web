@@ -55,10 +55,10 @@ export default function GiftCardModal({ card, isOpen, onClose }: GiftCardModalPr
     return (
         <div
             onClick={handleClose}
-            className="fixed inset-0 z-[10001] flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm"
+            className="fixed inset-0 z-10001 flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm"
         >
             <div
-                className="relative w-full max-w-lg rounded-xl border border-[#111111]/10 bg-white p-5 shadow-2xl md:p-8"
+                className="relative w-full max-w-lg rounded-xl border border-[#111111]/10 bg-white p-5 shadow-2xl"
                 onClick={(e) => e.stopPropagation()}
             >
                 {/* Close Button */}
@@ -74,7 +74,7 @@ export default function GiftCardModal({ card, isOpen, onClose }: GiftCardModalPr
 
                 {/* Selected Card Overview */}
                 <div className="mb-6 flex items-center gap-4 border-b border-[#111111]/10 pb-4">
-                    <div className="relative h-20 w-20 shrink-0 overflow-hidden">
+                    <div className="relative h-25 w-25 shrink-0 overflow-hidden">
                         <Image
                             src={card.imagePath || "/placeholder-card.png"}
                             alt={card.title}
@@ -86,7 +86,7 @@ export default function GiftCardModal({ card, isOpen, onClose }: GiftCardModalPr
                         <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#8a6a12]">
                             {card.title}
                         </span>
-                        <h3 className="text-xl font-bold text-[#111111]">${card.amount}</h3>
+                        <h3 className="font-playfair text-2xl font-bold tracking-tight">${card.amount}</h3>
                     </div>
                 </div>
 

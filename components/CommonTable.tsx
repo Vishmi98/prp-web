@@ -167,8 +167,7 @@ const CommonTable = <T extends { id: number | string }>({
                 </table>
             </div>
 
-            {/* Pagination */}
-            {!isLoading && totalPages > 1 && (
+            {!isLoading && totalRows > 0 && (
                 <div className="flex flex-col md:flex-row items-center justify-between gap-4 border-t border-gray-200 px-5 py-2">
                     <p className="text-xs text-gray-600">
                         <span className="font-semibold">
@@ -186,26 +185,20 @@ const CommonTable = <T extends { id: number | string }>({
 
                     <div className="flex items-center gap-2">
                         <button
-                            disabled={page === 1}
-                            onClick={() =>
-                                onPageChange?.(page - 1)
-                            }
+                            disabled={page <= 1}
+                            onClick={() => onPageChange?.(page - 1)}
                             className="cursor-pointer flex items-center gap-1 rounded-lg border border-gray-300 p-1 text-xs disabled:cursor-not-allowed disabled:opacity-50 hover:bg-gray-100"
                         >
                             <BiChevronLeft size={18} />
                         </button>
 
-                        <button
-                            className="px-2 text-xs font-semibold"
-                        >
+                        <button className="px-2 text-xs font-semibold">
                             {page}
                         </button>
 
                         <button
-                            disabled={page === totalPages}
-                            onClick={() =>
-                                onPageChange?.(page + 1)
-                            }
+                            disabled={page >= totalPages}
+                            onClick={() => onPageChange?.(page + 1)}
                             className="cursor-pointer flex items-center gap-1 rounded-lg border border-gray-300 p-1 text-xs disabled:cursor-not-allowed disabled:opacity-50 hover:bg-gray-100"
                         >
                             <BiChevronRight size={18} />

@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { FaNotesMedical, FaPenSquare, FaUsers } from 'react-icons/fa';
 import { FiLogOut } from 'react-icons/fi';
-import { HiOutlineGift, HiOutlineMail, HiOutlineSparkles } from 'react-icons/hi' // Replace with your exact imports
+import { HiOutlineCube, HiOutlineGift, HiOutlineMail, HiOutlineSparkles } from 'react-icons/hi' // Replace with your exact imports
 import { MdOutlineAutoStories } from 'react-icons/md';
 
 import { handleCleanCookie } from '@/utils/cookie.util';
@@ -23,6 +23,10 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, setIsOpen }) => {
     { id: 'stories', label: "Success Stories", href: '/admin/stories', icon: <MdOutlineAutoStories className="h-4 w-4 mr-2" /> },
     { id: 'giftCards', label: "Gift Cards", href: '/admin/gift-cards', icon: <HiOutlineGift className="h-4 w-4 mr-2" /> },
     { id: 'giftCardRequests', label: "Gift Card Requests", href: '/admin/gift-card-requests', icon: <HiOutlineGift className="h-4 w-4 mr-2" /> },
+    { id: 'packages', label: "Packages", href: '/admin/packages', icon: <HiOutlineCube className="h-4 w-4 mr-2" /> },
+    { id: 'packageRequests', label: "Package Requests", href: '/admin/package-requests', icon: <HiOutlineCube className="h-4 w-4 mr-2" /> },
+    { id: 'sessions', label: "Sessions", href: '/admin/sessions', icon: <HiOutlineCube className="h-4 w-4 mr-2" /> },
+    { id: 'sessionRequests', label: "Session Requests", href: '/admin/session-requests', icon: <HiOutlineCube className="h-4 w-4 mr-2" /> },
   ];
 
   const handleLogOut = () => {

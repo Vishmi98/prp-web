@@ -5,11 +5,10 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
 import { TreatmentResultItemType } from "@/modules/treatments/treatments.types";
-import { getTreatmentResults } from "@/modules/treatments/treatments.service";
+import { getTreatmentResultsByTreatmentType } from "@/modules/treatments/treatments.service";
 import { ResultCardSkeleton } from "@/modules/treatments/ui/ResultCardSkeleton";
 import { ResultCard } from "@/modules/treatments/ui/ResultCard";
 
-// Responsive breakpoint configuration for react-multi-carousel
 const responsive = {
     desktop: {
         breakpoint: { max: 3000, min: 1024 },
@@ -28,7 +27,10 @@ const responsive = {
     },
 };
 
+type TreatmentType = "Hair" | "Face";
+
 const Results = () => {
+    const [activeTab, setActiveTab] = useState<TreatmentType>("Hair");
     const [results, setResults] = useState<TreatmentResultItemType[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
@@ -37,9 +39,10 @@ const Results = () => {
         const fetchResults = async () => {
             try {
                 setLoading(true);
-                const response = await getTreatmentResults();
+                setError(null);
+                const response = await getTreatmentResultsByTreatmentType(activeTab);
 
-                if (response.success) {
+                if (response.success && Array.isArray(response.results)) {
                     setResults(response.results);
                 } else {
                     setError(response.message || "Failed to load treatment results.");
@@ -52,22 +55,40 @@ const Results = () => {
         };
 
         fetchResults();
-    }, []);
+    }, [activeTab]);
 
     const showCarousel = !loading && !error && results.length > 3;
 
     return (
         <section className="py-20 bg-[#D4AF37]/10 text-black">
             <div className="w-[90%] xl:w-[85%] mx-auto">
-                {/* Heading */}
-                <div className="text-start mb-14">
-                    <h2 className="text-3xl md:text-4xl font-semibold">
-                        Before & After Results
-                    </h2>
-                    <p className="mt-4">
-                        Real transformations from our PRP treatments. Visible, natural,
-                        and long-lasting results.
-                    </p>
+                {/* Heading & Category Tabs */}
+                <div className="flex flex-col items-center md:flex-row md:items-end justify-between mb-14 gap-6 text-center md:text-start">
+                    <div className="text-center md:text-start">
+                        <h2 className="text-3xl md:text-4xl font-semibold">
+                            Before & After Results
+                        </h2>
+                        <p className="mt-4">
+                            Real transformations from our PRP treatments. Visible, natural,
+                            and long-lasting results.
+                        </p>
+                    </div>
+
+                    {/* Tabs */}
+                    <div className="flex items-center gap-2 bg-white/60 p-1.5 rounded-full border border-gray-200 self-center md:self-auto shadow-sm">
+                        {(["Hair", "Face"] as TreatmentType[]).map((tab) => (
+                            <button
+                                key={tab}
+                                onClick={() => setActiveTab(tab)}
+                                className={`px-6 py-2 rounded-full font-medium text-sm transition-all duration-300 ${activeTab === tab
+                                        ? "bg-[#D4AF37] text-white shadow-md"
+                                        : "text-gray-700 hover:text-black hover:bg-gray-100/50"
+                                    }`}
+                            >
+                                {tab} Results
+                            </button>
+                        ))}
+                    </div>
                 </div>
 
                 {/* Error State */}
@@ -80,7 +101,7 @@ const Results = () => {
                 {/* Empty State */}
                 {!loading && !error && results.length === 0 && (
                     <div className="text-center py-10 text-gray-500">
-                        <p>No results available at the moment.</p>
+                        <p>No {activeTab.toLowerCase()} treatment results available at the moment.</p>
                     </div>
                 )}
 
@@ -107,7 +128,6 @@ const Results = () => {
                             containerClass="carousel-container -mx-3"
                             itemClass="px-3"
                             removeArrowOnDeviceType={["tablet", "mobile"]}
-                            showDots={true}
                         >
                             {results.map((item, index) => (
                                 <ResultCard

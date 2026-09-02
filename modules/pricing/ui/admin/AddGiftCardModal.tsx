@@ -6,12 +6,13 @@ import { Formik, Form, FormikProps, ErrorMessage, Field } from "formik";
 import { toast, ToastContainer } from "react-toastify";
 import { CgClose } from "react-icons/cg";
 
-import { MAX_SIZE_MB } from "@/constants/data";
-import CropModal from "@/components/ImageCropper";
-import { AddModalProps } from "@/constants/types";
 import { GiftCardDataType } from "../../pricing.types";
 import { createGiftCard } from "../../pricing.service";
 import { addGiftCardInitialValues, addGiftCardValidationSchema } from "../../pricing.utils";
+
+import { MAX_SIZE_MB } from "@/constants/data";
+import CropModal from "@/components/ImageCropper";
+import { AddModalProps } from "@/constants/types";
 
 
 const AddGiftCardModal: FC<AddModalProps> = ({ isOpen, onClose, handleReload }) => {

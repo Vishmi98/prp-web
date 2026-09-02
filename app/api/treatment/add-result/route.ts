@@ -16,33 +16,27 @@ export async function POST(req: NextRequest) {
 
         const formData = await req.formData();
 
-        const treatmentId =
-            Number(formData.get("treatmentId"));
-
-        const beforeImage =
-            formData.get("beforeImage") as File;
-
-        const afterImage =
-            formData.get("afterImage") as File;
+        const treatmentId = Number(formData.get("treatmentId"));
+        const treatmentType = formData.get("treatmentType") as string;
+        const beforeImage = formData.get("beforeImage") as File;
+        const afterImage = formData.get("afterImage") as File;
 
         if (
             !treatmentId ||
-            !beforeImage ||
-            !afterImage
+            !treatmentType ||
+            !beforeImage
         ) {
             return sendErrorResponse(
-                "Treatment id and images are required",
+                "Treatment id, treatment type, and images are required",
                 200
             );
         }
 
-        const treatment =
-            await TreatmentModel.findOne({
-                id: treatmentId
-            });
+        const treatment = await TreatmentModel.findOne({
+            id: treatmentId
+        });
 
         if (!treatment) {
-
             return sendErrorResponse(
                 "Treatment not found",
                 200
@@ -77,25 +71,19 @@ export async function POST(req: NextRequest) {
                 "treatments/results/after"
             );
 
+        // Pushing the object including treatmentType
         treatment.results.push({
-            beforeImagePath:
-                beforeUploaded.url,
-
-            beforeImageId:
-                beforeUploaded.fileId,
-
-            afterImagePath:
-                afterUploaded.url,
-
-            afterImageId:
-                afterUploaded.fileId,
-
+            beforeImagePath: beforeUploaded.url,
+            beforeImageId: beforeUploaded.fileId,
+            afterImagePath: afterUploaded.url,
+            afterImageId: afterUploaded.fileId,
+            treatmentType: treatmentType, // Added treatmentType here
         });
 
         await treatment.save();
 
         return sendSuccessResponse(
-            "Before/After result added successfully",
+            "Result added successfully",
             {
                 treatment
             }

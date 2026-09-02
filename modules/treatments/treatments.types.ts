@@ -3,6 +3,7 @@ export interface BeforeAfterType {
     beforeImageId: string;
     afterImagePath: string;
     afterImageId: string;
+    treatmentType: string;
 }
 
 export interface TreatmentPricingType {

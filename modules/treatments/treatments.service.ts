@@ -103,6 +103,24 @@ export const getTreatmentResults = async (): Promise<TreatmentResultsResponseDat
     };
 };
 
+export const getTreatmentResultsByTreatmentType = async (
+    treatmentType: string
+): Promise<TreatmentResultsResponseDataType> => {
+    const response: TreatmentResultsResponseType = await apiCall({
+        url: `${URL}/treatment/get-by-type`, // Adjust API route URL if needed
+        method: "POST",
+        body: { treatmentType }, // Pass treatmentType in the request body
+    });
+
+    const data = response.data || {};
+
+    return {
+        success: response.success ?? false,
+        message: response.message || "No message provided",
+        results: data.results || [],
+    };
+};
+
 export const getTreatmentBySlug = async (props: { slug: string }): Promise<SingleTreatmentResponseType> => {
     const { slug } = props;
 

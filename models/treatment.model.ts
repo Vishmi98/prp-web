@@ -12,11 +12,13 @@ const beforeAfterSchema = new mongoose.Schema(
         },
         afterImagePath: {
             type: String,
-            required: true,
         },
         afterImageId: {
             type: String,
-            required: true,
+        },
+        treatmentType: {
+            type: String,
+            default: "Hair",
         },
     },
     {

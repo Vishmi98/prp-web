@@ -154,7 +154,7 @@ const TreatmentsTable: React.FC<TableProps> = ({ reload }) => {
             setIsResultModalOpen(true);
           }}
           className="bg-black text-white text-xs px-2 py-1 rounded flex items-center gap-1">
-         <PiPlus /> Add
+          <PiPlus /> Add
         </button>
       )
     },
@@ -266,30 +266,11 @@ const TreatmentsTable: React.FC<TableProps> = ({ reload }) => {
                             key={index}
                             className="space-y-2"
                           >
-                            <p className="text-sm font-medium">
-                              Before
-                            </p>
                             <Image
                               src={
                                 item.beforeImagePath
                               }
                               alt="Before"
-                              width={150}
-                              height={100}
-                              className="
-                              rounded
-                              border
-                              object-cover
-                              "
-                            />
-                            <p className="text-sm font-medium">
-                              After
-                            </p>
-                            <Image
-                              src={
-                                item.afterImagePath
-                              }
-                              alt="After"
                               width={150}
                               height={100}
                               className="

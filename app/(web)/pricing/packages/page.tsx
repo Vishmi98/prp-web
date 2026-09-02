@@ -1,37 +1,47 @@
+"use client";
+
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 
 import ContactPractitionerSection from "@/modules/pricing/ui/ContactPractitionerSection";
-
-const packages = [
-  {
-    name: "PRP Therapy — Scalp -3 Sessions",
-    price: "$1,500.00",
-  },
-  {
-    name: "PRP Therapy — Skin - 3 Sessions",
-    price: "$1,500.00",
-  },
-  {
-    name: "PRF Therapy — Scalp -3 seasons",
-    price: "$1,500.00",
-  },
-  {
-    name: "PRF Therapy — Skin - 3 sessions",
-    price: "$1,500.00",
-  },
-  {
-    name: "PRP Therapy Scalp + Novobio Red Light (LED) Hair Cap",
-    price: "$1,975.00",
-    link: "https://www.novobio.com.au/led-hair-cap",
-  },
-  {
-    name: "PRF Therapy Scalp + Novobio Red Light (LED) Hair Cap",
-    price: "$1,975.00",
-    link: "https://www.novobio.com.au/led-hair-cap",
-  },
-];
+import { PackageDataType } from "@/modules/packages/packages.types";
+import { getPackages } from "@/modules/packages/packages.service";
+import PackageModal from "@/modules/packages/ui/PackageModal";
 
 export default function PackagesPage() {
+  const [packages, setPackages] = useState<PackageDataType[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [selectedPackage, setSelectedPackage] = useState<PackageDataType | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+
+  useEffect(() => {
+    const fetchPackagesData = async () => {
+      try {
+        setLoading(true);
+        const response = await getPackages();
+        if (response.success) {
+          setPackages(response.packages);
+        }
+      } catch (error) {
+        console.error("Failed to fetch packages:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPackagesData();
+  }, []);
+
+  const handleSelectPackage = (pkg: PackageDataType) => {
+    setSelectedPackage(pkg);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedPackage(null);
+  };
+
   return (
     <main className="min-h-screen bg-[#D4AF37]/10 pt-32 pb-20 text-[#111111]">
       <div className="mx-auto w-[90%] xl:w-[85%]">
@@ -64,36 +74,96 @@ export default function PackagesPage() {
                   <th className="px-5 py-4 text-right text-sm font-semibold uppercase tracking-[0.12em]">
                     Price
                   </th>
+                  <th className="px-5 py-4 text-right text-sm font-semibold uppercase tracking-[0.12em]">
+                  </th>
                 </tr>
               </thead>
               <tbody>
-                {packages.map((item, index) => (
-                  <tr
-                    key={`${item.name}-${index}`}
-                    className={index % 2 === 0 ? "bg-white/60" : "bg-[#f5f1ea]"}
-                  >
-                    <td className="border-t border-[#111111]/10 px-5 py-5 align-top text-base text-[#111111]">
-                      {item.link ? (
+                {loading ? (
+                  Array.from({ length: 5 }).map((_, index) => (
+                    <tr
+                      key={`skeleton-${index}`}
+                      className={index % 2 === 0 ? "bg-white/60" : "bg-[#f5f1ea]"}
+                    >
+                      <td className="border-t border-[#111111]/10 px-5 py-5 align-top">
                         <div className="flex flex-col gap-2">
-                          <span>{item.name}</span>
-                          <a
-                            href={item.link}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="text-sm text-[#8a6a12] underline decoration-[#8a6a12]/60 underline-offset-4 transition hover:text-[#111111]"
-                          >
-                            {item.link}
-                          </a>
+                          <div className="h-5 w-48 animate-pulse rounded bg-gray-300/70" />
+                          <div className="h-4 w-32 animate-pulse rounded bg-gray-200/80" />
                         </div>
-                      ) : (
-                        item.name
-                      )}
-                    </td>
-                    <td className="border-t border-[#111111]/10 px-5 py-5 text-right align-top text-base font-semibold text-[#111111]">
-                      ${item.price.replace("$", "")}
+                      </td>
+                      <td className="border-t border-[#111111]/10 px-5 py-5 text-right align-top">
+                        <div className="ml-auto h-5 w-20 animate-pulse rounded bg-gray-300/70" />
+                      </td>
+                      <td className="border-t border-[#111111]/10 px-5 py-5 text-right align-top">
+                        <div className="ml-auto h-5 w-20 animate-pulse rounded bg-gray-300/70" />
+                      </td>
+                    </tr>
+                  ))
+                ) : packages.length > 0 ? (
+                  packages.map((item, index) => {
+                    const categoriesString = item.category?.length
+                      ? `- ${item.category.join(", ")}`
+                      : null;
+                    const sessionsText = item.sessionsCount
+                      ? `- ${item.sessionsCount} session${item.sessionsCount > 1 ? "s" : ""}`
+                      : "";
+
+                    return (
+                      <tr
+                        key={item.id ?? `${item.name}-${index}`}
+                        className={index % 2 === 0 ? "bg-white/60" : "bg-[#f5f1ea]"}
+                      >
+                        <td className="border-t border-[#111111]/10 px-5 py-5 align-top text-base text-[#111111]">
+                          <div className="flex flex-col gap-1">
+                            <span className="font-medium">
+                              {item.name}
+                              {categoriesString && ` ${categoriesString}`}
+                              {` ${sessionsText}`}
+                            </span>
+
+                            {item.link && (
+                              <a
+                                href={item.link}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="text-sm text-[#8a6a12] underline decoration-[#8a6a12]/60 underline-offset-4 transition hover:text-[#111111]"
+                              >
+                                {item.link}
+                              </a>
+                            )}
+                          </div>
+                        </td>
+                        <td className="border-t border-[#111111]/10 px-5 py-5 text-right align-top">
+                          <div className="flex flex-col items-end gap-3">
+                            <span className="text-base font-semibold text-[#111111]">
+                              ${Number(item.price ?? 0).toFixed(2)}
+                            </span>
+                          </div>
+                        </td>
+                        <td className="border-t border-[#111111]/10 px-5 py-5 text-right align-top">
+                          <div className="flex flex-col items-end gap-3">
+                            <button
+                              type="button"
+                              onClick={() => handleSelectPackage(item)}
+                              className="inline-flex w-full items-center justify-center rounded-full bg-[#0B0B0B] px-3 md:px-1 py-1.5 text-sm font-semibold uppercase tracking-[0.15em] text-white transition hover:bg-[#D4AF37] hover:text-[#111111]"
+                            >
+                              Request
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    );
+                  })
+                ) : (
+                  <tr>
+                    <td
+                      colSpan={2}
+                      className="border-t border-[#111111]/10 px-5 py-8 text-center text-sm text-gray-500"
+                    >
+                      No packages available at the moment.
                     </td>
                   </tr>
-                ))}
+                )}
               </tbody>
             </table>
           </div>
@@ -101,6 +171,12 @@ export default function PackagesPage() {
 
         <ContactPractitionerSection />
       </div>
+
+      <PackageModal
+        pack={selectedPackage}
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+      />
     </main>
   );
 }
