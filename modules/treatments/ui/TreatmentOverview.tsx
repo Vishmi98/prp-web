@@ -1,7 +1,6 @@
 "use client";
 
-import React, { useMemo, useState } from "react";
-import Image from "next/image";
+import React from "react";
 import { useRouter } from "next/navigation";
 import {
     BiCheckCircle,
@@ -23,7 +22,6 @@ import ImageWithSkeleton from "@/components/ImageWithSkeleton";
 
 const TreatmentOverview = ({ treatment }: TreatmentDetailsProps) => {
     const router = useRouter();
-    const [activeResultType, setActiveResultType] = useState<"Hair" | "Face">("Hair");
 
     const {
         title,
@@ -35,16 +33,6 @@ const TreatmentOverview = ({ treatment }: TreatmentDetailsProps) => {
         thumbnailImagePath,
         overview,
     } = treatment;
-
-    const filteredResults = useMemo(
-        () =>
-            results.filter((item) => {
-                const type = item.treatmentType?.trim().toLowerCase() || "hair";
-
-                return type === activeResultType.toLowerCase();
-            }),
-        [activeResultType, results]
-    );
 
     const responsive = {
         desktop: {
@@ -159,7 +147,7 @@ const TreatmentOverview = ({ treatment }: TreatmentDetailsProps) => {
             {results && results.length > 0 && (
                 <div className="bg-[#D4AF37]/10 py-20">
                     <div className="w-[90%] xl:w-[85%] mx-auto">
-                        <div className="flex flex-col items-center md:flex-row md:items-end justify-between mb-14 gap-6 text-center md:text-start">
+                        <div className="flex items-center justify-between mb-6">
                             <div>
                                 <p className="uppercase tracking-[3px] text-gold text-sm mb-2 font-medium">
                                     Real Client Results
@@ -167,53 +155,32 @@ const TreatmentOverview = ({ treatment }: TreatmentDetailsProps) => {
 
                                 <h3 className="text-3xl font-semibold">Before & After</h3>
                             </div>
-
-                            <div className="flex items-center gap-2 rounded-full border border-gray-200 bg-white/60 p-1.5 shadow-sm">
-                                {(["Hair", "Face"] as const).map((type) => (
-                                    <button
-                                        key={type}
-                                        type="button"
-                                        onClick={() => setActiveResultType(type)}
-                                        className={`rounded-full px-6 py-2 text-sm font-medium transition-all duration-300 ${activeResultType === type
-                                            ? "bg-[#D4AF37] text-white shadow-md"
-                                            : "text-gray-700 hover:bg-gray-100/50 hover:text-black"
-                                            }`}
-                                    >
-                                        {type} Results
-                                    </button>
-                                ))}
-                            </div>
                         </div>
 
-                        {filteredResults.length > 0 ? (
-                            <Carousel
-                                responsive={responsive}
-                                infinite
-                                autoPlay
-                                autoPlaySpeed={4000}
-                                swipeable
-                                draggable
-                            >
-                                {filteredResults.map((item, index) => (
-                                    <div key={index} className="overflow-hidden md:mx-2 rounded-lg shadow-sm bg-white">
-                                        <div className="grid grid-cols-1">
-                                            <div className="relative border-r border-gray-200">
-                                                <ImageWithSkeleton
-                                                    src={item.beforeImagePath}
-                                                    alt="Before Treatment"
-                                                    width={750}
-                                                    height={938}
-                                                />
-                                            </div>
+                        <Carousel
+                            responsive={responsive}
+                            infinite
+                            autoPlay
+                            autoPlaySpeed={4000}
+                            swipeable
+                            draggable
+                        >
+                            {results.map((item, index) => (
+                                <div key={index} className="overflow-hidden md:mx-2 rounded-lg shadow-sm bg-white">
+                                    <div className="grid grid-cols-1">
+                                        {/* Before */}
+                                        <div className="relative border-r border-gray-200">
+                                            <ImageWithSkeleton
+                                                src={item.beforeImagePath}
+                                                alt="Before Treatment"
+                                                width={750}
+                                                height={938}
+                                            />
                                         </div>
                                     </div>
-                                ))}
-                            </Carousel>
-                        ) : (
-                            <p className="py-10 text-center text-gray-500">
-                                No {activeResultType.toLowerCase()} treatment results available at the moment.
-                            </p>
-                        )}
+                                </div>
+                            ))}
+                        </Carousel>
                     </div>
                 </div>
             )}
