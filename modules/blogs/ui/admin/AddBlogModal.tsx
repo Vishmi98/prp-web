@@ -13,6 +13,7 @@ import { addBlogInitialValues, addBlogValidationSchema } from "../../blogs.utils
 import { MAX_SIZE_MB } from "@/constants/data";
 import CropModal from "@/components/ImageCropper";
 import { AddModalProps } from "@/constants/types";
+import { slugify } from "@/utils/slug";
 
 
 const AddBlogModal: FC<AddModalProps> = ({ isOpen, onClose, handleReload }) => {
@@ -115,12 +116,19 @@ const AddBlogModal: FC<AddModalProps> = ({ isOpen, onClose, handleReload }) => {
                     validationSchema={addBlogValidationSchema}
                     onSubmit={handleSubmit}
                 >
-                    {({ }: FormikProps<BlogType>) => (
+                    {({ setFieldValue }: FormikProps<BlogType>) => (
                         <Form>
                             <div className="flex flex-col gap-4 h-[60vh] overflow-y-auto p-4">
                                 <label className="text-sm">
                                     Title
-                                    <Field name="title" type="text" className="border border-gray-300 rounded-sm text-sm p-2 w-full " />
+                                    <Field name="title" type="text" className="border border-gray-300 rounded-sm text-sm p-2 w-full "
+                                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                                            const title = e.target.value;
+
+                                            setFieldValue("title", title);
+                                            setFieldValue("url", slugify(title));
+                                        }}
+                                    />
                                     <ErrorMessage name="title" component="div" className="text-red-600 text-xs" />
                                 </label>
                                 <label className="text-sm">

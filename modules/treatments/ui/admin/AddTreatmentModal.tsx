@@ -14,6 +14,7 @@ import { MAX_SIZE_MB } from "@/constants/data";
 import CropModal from "@/components/ImageCropper";
 import { AddModalProps } from "@/constants/types";
 import { FiDelete } from "react-icons/fi";
+import { slugify } from "@/utils/slug";
 
 
 const AddTreatmentModal: FC<AddModalProps> = ({ isOpen, onClose, handleReload }) => {
@@ -117,12 +118,19 @@ const AddTreatmentModal: FC<AddModalProps> = ({ isOpen, onClose, handleReload })
                     validationSchema={addTreatmentValidationSchema}
                     onSubmit={handleSubmit}
                 >
-                    {({ values }: FormikProps<TreatmentDataType>) => (
+                    {({ values, setFieldValue }: FormikProps<TreatmentDataType>) => (
                         <Form>
                             <div className="flex flex-col gap-4 h-[60vh] overflow-y-auto p-4">
                                 <label className="text-sm">
                                     Title
-                                    <Field name="title" type="text" className="border border-gray-300 rounded-sm text-sm p-2 w-full " />
+                                    <Field name="title" type="text" className="border border-gray-300 rounded-sm text-sm p-2 w-full "
+                                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                                            const title = e.target.value;
+
+                                            setFieldValue("title", title);
+                                            setFieldValue("slug", slugify(title));
+                                        }}
+                                    />
                                     <ErrorMessage name="title" component="div" className="text-red-600 text-xs" />
                                 </label>
                                 <label className="text-sm">
