@@ -1,7 +1,8 @@
 import React from "react";
-import Image from "next/image";
 
 import { TreatmentResultItemType } from "../treatments.types";
+
+import ImageWithSkeleton from "@/components/ImageWithSkeleton";
 
 
 interface ResultCardProps {
@@ -20,7 +21,7 @@ export const ResultCard: React.FC<ResultCardProps> = ({ item }) => {
 
             {/* Images */}
             <div className="grid grid-cols-1 gap-1">
-                <Image
+                <ImageWithSkeleton
                     src={item.beforeImagePath}
                     alt="Before Treatment"
                     width={750}

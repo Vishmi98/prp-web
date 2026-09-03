@@ -5,7 +5,7 @@ const AboutHero = () => {
     return (
         <section className="bg-white pt-32 pb-20 relative">
             {/* Subtle background decoration */}
-            <div className="absolute top-0 right-0 w-1/3 h-[500px] bg-gradient-to-bl from-gold/10 to-transparent rounded-bl-full pointer-events-none" />
+            <div className="absolute top-0 right-0 w-1/3 h-[500px] bg-gradient-to-bl from-[#D4AF37]/10 to-transparent rounded-bl-full pointer-events-none" />
 
             <div className="w-[90%] xl:w-[85%] mx-auto relative z-10">
                 <div className="flex flex-col lg:flex-row gap-8 items-center">
@@ -26,7 +26,7 @@ const AboutHero = () => {
 
                     {/* Right Contact Details Side */}
                     <div className="w-full lg:w-[45%]">
-                        <div className="bg-gray-50 border border-gray-100 rounded-sm p-6 md:p-10 shadow-lg relative overflow-hidden">
+                        <div className="bg-gray-50 border border-gray-100 rounded-sm p-5 md:p-10 shadow-lg relative overflow-hidden">
                             {/* Gold Top Border */}
                             <div className="absolute top-0 left-0 w-full h-1 bg-gold" />
 
@@ -37,7 +37,7 @@ const AboutHero = () => {
                                 <a
                                     href="tel:+61460351834"
                                     className="flex items-start gap-4">
-                                    <div className="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center text-gold shrink-0 mt-1">
+                                    <div className="w-10 h-10 rounded-full bg-[#D4AF37]/10 flex items-center justify-center text-gold shrink-0 mt-1">
                                         <BiPhoneCall size={20} />
                                     </div>
                                     <div>
@@ -50,7 +50,7 @@ const AboutHero = () => {
                                 <a
                                     href="mailto:admin@prp4skinandhair.com.au"
                                     className="flex items-start gap-4">
-                                    <div className="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center text-gold shrink-0 mt-1">
+                                    <div className="w-10 h-10 rounded-full bg-[#D4AF37]/10 flex items-center justify-center text-gold shrink-0 mt-1">
                                         <BiEnvelope size={20} />
                                     </div>
                                     <div>
@@ -61,7 +61,7 @@ const AboutHero = () => {
 
                                 {/* Location */}
                                 <div className="flex items-start gap-4">
-                                    <div className="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center text-gold shrink-0 mt-1">
+                                    <div className="w-10 h-10 rounded-full bg-[#D4AF37]/10 flex items-center justify-center text-gold shrink-0 mt-1">
                                         <BiMap size={20} />
                                     </div>
                                     <div>
@@ -74,7 +74,7 @@ const AboutHero = () => {
 
                                 {/* Hours */}
                                 <div className="flex items-start gap-4">
-                                    <div className="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center text-gold shrink-0 mt-1">
+                                    <div className="w-10 h-10 rounded-full bg-[#D4AF37]/10 flex items-center justify-center text-gold shrink-0 mt-1">
                                         <BiTime size={20} />
                                     </div>
                                     <div>

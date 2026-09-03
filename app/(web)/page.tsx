@@ -5,6 +5,7 @@ import OurServices from '@/modules/home/ui/OurServices'
 import Results from '@/modules/home/ui/Results'
 import Team from '@/modules/home/ui/Team'
 import SuccessStories from '@/modules/home/ui/SuccessStories'
+import FrequentlyAskedQuestions from '@/modules/home/ui/FrequentlyAskedQuestions'
 
 
 const Home = () => {
@@ -15,6 +16,7 @@ const Home = () => {
       <Results />
       <Team />
       <SuccessStories />
+      <FrequentlyAskedQuestions />
     </div>
   )
 }

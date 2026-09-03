@@ -1,7 +1,9 @@
 import React from "react";
-import Image from "next/image";
 
 import { ServiceDataType } from "../services.types";
+
+import ImageWithSkeleton from "@/components/ImageWithSkeleton";
+
 
 interface ServiceCardProps {
     service: ServiceDataType;
@@ -16,7 +18,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, index }) => {
         <div className="overflow-hidden hover:scale-[1.02] transition duration-300">
             {/* Image Container */}
             <div className="relative w-full h-72 md:h-64 bg-gray-100 rounded-sm overflow-hidden">
-                <Image
+                <ImageWithSkeleton
                     src={imageUrl}
                     alt={service.title}
                     fill

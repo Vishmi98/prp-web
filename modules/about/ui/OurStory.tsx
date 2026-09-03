@@ -1,5 +1,7 @@
 import React from "react";
-import Image from "next/image";
+
+import ImageWithSkeleton from "@/components/ImageWithSkeleton";
+
 
 const OurStory = () => {
     return (
@@ -10,8 +12,8 @@ const OurStory = () => {
                     {/* Image Side */}
                     <div className="w-full lg:w-1/2 relative">
                         <div className="relative h-[400px] md:h-[500px] w-full rounded-sm overflow-hidden">
-                            <Image
-                                src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=1000&auto=format&fit=crop"
+                            <ImageWithSkeleton
+                                src="/Alocuro machine.png"
                                 alt="Clinic Interior"
                                 fill
                                 className="object-cover"
@@ -27,7 +29,7 @@ const OurStory = () => {
 
                         <div className="space-y-5 text-gray-600 leading-relaxed">
                             <p>
-                                Founded with a vision to redefine aesthetic medicine, our clinic specializes exclusively in Platelet-Rich Plasma (PRP) therapies. We recognized the immense potential of utilizing the body's own natural healing mechanisms to achieve remarkable results in hair restoration and skin rejuvenation.
+                                Founded with a vision to redefine aesthetic medicine, our clinic specializes exclusively in Platelet-Rich Plasma (PRP) therapies. We recognized the immense potential of utilizing the body&apos;s own natural healing mechanisms to achieve remarkable results in hair restoration and skin rejuvenation.
                             </p>
                             <p>
                                 Over the years, we have treated thousands of patients, refining our techniques to deliver the most effective and comfortable experience possible. Our commitment to continuous research ensures that we remain at the forefront of regenerative aesthetic treatments.

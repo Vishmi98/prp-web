@@ -127,7 +127,6 @@ const Results = () => {
                             transitionDuration={500}
                             containerClass="carousel-container -mx-3"
                             itemClass="px-3"
-                            removeArrowOnDeviceType={["tablet", "mobile"]}
                         >
                             {results.map((item, index) => (
                                 <ResultCard

@@ -29,18 +29,12 @@ const Footer = () => {
                         Experience science-backed beauty with luxury care.
                     </p>
 
-                    {/* Social Icons */}
-                    <div className="flex gap-4 mt-5">
-                        {[FaFacebookF, FaInstagram, FaWhatsapp].map((Icon, i) => (
-                            <div
-                                key={i}
-                                className="w-9 h-9 flex items-center justify-center rounded-full border border-black cursor-pointer
-                hover:bg-black hover:text-white transition-all duration-300 text-black"
-                            >
-                                <Icon size={14} />
-                            </div>
-                        ))}
-                    </div>
+                    <Link
+                        href="/contact"
+                        className="inline-flex rounded-full border border-black px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-black mt-3 hover:bg-black hover:text-white transition-all duration-300"
+                    >
+                        Book Online
+                    </Link>
                 </div>
 
                 {/* Quick Links */}
@@ -94,11 +88,24 @@ const Footer = () => {
                             <span>Mon - Sat: 9AM - 7PM</span>
                         </li>
                     </ul>
+
+                    {/* Social Icons */}
+                    <div className="flex gap-4 mt-5">
+                        {[FaFacebookF, FaInstagram, FaWhatsapp].map((Icon, i) => (
+                            <div
+                                key={i}
+                                className="w-9 h-9 flex items-center justify-center rounded-full border border-black cursor-pointer
+                hover:bg-black hover:text-white transition-all duration-300 text-black"
+                            >
+                                <Icon size={14} />
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
 
             {/* Divider */}
-            <div className="w-full h-[1px] bg-black/30 my-10"></div>
+            <div className="w-full h-[1px] bg-black/30 my-5"></div>
 
             {/* Bottom Section */}
             <div className="flex flex-col md:flex-row justify-between items-center text-black text-xs">

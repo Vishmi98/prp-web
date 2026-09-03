@@ -5,6 +5,7 @@ import OurStory from '@/modules/about/ui/OurStory'
 import Mission from '@/modules/about/ui/Mission'
 import Team from '@/modules/home/ui/Team'
 import SuccessStories from '@/modules/home/ui/SuccessStories'
+import FrequentlyAskedQuestions from '@/modules/home/ui/FrequentlyAskedQuestions'
 
 
 const AboutPage = () => {
@@ -15,6 +16,7 @@ const AboutPage = () => {
             <Mission />
             <Team />
             <SuccessStories />
+            <FrequentlyAskedQuestions />
         </main>
     )
 }

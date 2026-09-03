@@ -1,11 +1,10 @@
 "use client"
 
 import React from "react";
-import Link from "next/link";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 import Button from "@/components/Button";
+import ImageWithSkeleton from "@/components/ImageWithSkeleton";
 
 
 const Hero = () => {
@@ -37,8 +36,8 @@ const Hero = () => {
 
                 {/* RIGHT IMAGE */}
                 <div className="relative w-full h-[350px] md:h-[500px]">
-                    <Image
-                        src="/hero-bg.png" // put your image in /public
+                    <ImageWithSkeleton
+                        src="/hero-bg.png"
                         alt="PRP Treatment"
                         fill
                         className="object-cover object-left"

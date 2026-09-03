@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useMemo, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import {
@@ -18,10 +18,12 @@ import "react-multi-carousel/lib/styles.css";
 import { TreatmentDetailsProps } from "../treatments.types";
 
 import Button from "@/components/Button";
+import ImageWithSkeleton from "@/components/ImageWithSkeleton";
 
 
 const TreatmentOverview = ({ treatment }: TreatmentDetailsProps) => {
     const router = useRouter();
+    const [activeResultType, setActiveResultType] = useState<"Hair" | "Face">("Hair");
 
     const {
         title,
@@ -33,6 +35,16 @@ const TreatmentOverview = ({ treatment }: TreatmentDetailsProps) => {
         thumbnailImagePath,
         overview,
     } = treatment;
+
+    const filteredResults = useMemo(
+        () =>
+            results.filter((item) => {
+                const type = item.treatmentType?.trim().toLowerCase() || "hair";
+
+                return type === activeResultType.toLowerCase();
+            }),
+        [activeResultType, results]
+    );
 
     const responsive = {
         desktop: {
@@ -76,40 +88,13 @@ const TreatmentOverview = ({ treatment }: TreatmentDetailsProps) => {
                                     {shortDescription}
                                 </p>
                             )}
-
-                            {/* Benefits */}
-                            {benefits.length > 0 && (
-                                <div className="mt-12">
-                                    <h3 className="text-2xl font-semibold mb-8">Key Benefits</h3>
-
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-5">
-                                        {benefits.map((benefit, index) => (
-                                            <div
-                                                key={index}
-                                                className="flex items-start gap-4 bg-white border border-gray-100 rounded-lg p-3 shadow-sm hover:shadow-md transition-all duration-300"
-                                            >
-                                                <div className="w-10 h-10 rounded-full bg-[#D4AF37]/10 flex items-center justify-center shrink-0">
-                                                    <BiCheckCircle
-                                                        className="text-gold"
-                                                        size={22}
-                                                    />
-                                                </div>
-
-                                                <p className="text-gray-700 leading-relaxed text-sm">
-                                                    {benefit}
-                                                </p>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-                            )}
                         </div>
 
                         {/* Right Image */}
                         <div className="relative">
                             <div className="relative h-[380px] md:h-[600px] rounded-lg overflow-hidden shadow-lg bg-gray-100">
                                 {thumbnailImagePath ? (
-                                    <Image
+                                    <ImageWithSkeleton
                                         src={thumbnailImagePath}
                                         alt={title}
                                         fill
@@ -141,6 +126,32 @@ const TreatmentOverview = ({ treatment }: TreatmentDetailsProps) => {
                             </div>
                         </div>
                     </div>
+                    {/* Benefits */}
+                    {benefits.length > 0 && (
+                        <div className="mt-12">
+                            <h3 className="text-2xl font-semibold mb-8">Key Benefits</h3>
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-5">
+                                {benefits.map((benefit, index) => (
+                                    <div
+                                        key={index}
+                                        className="flex items-start gap-4 bg-white border border-gray-100 rounded-lg p-3 shadow-sm hover:shadow-md transition-all duration-300"
+                                    >
+                                        <div className="w-10 h-10 rounded-full bg-[#D4AF37]/10 flex items-center justify-center shrink-0">
+                                            <BiCheckCircle
+                                                className="text-gold"
+                                                size={22}
+                                            />
+                                        </div>
+
+                                        <p className="text-gray-700 leading-relaxed">
+                                            {benefit}
+                                        </p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    )}
                 </div>
             </section>
 
@@ -156,34 +167,53 @@ const TreatmentOverview = ({ treatment }: TreatmentDetailsProps) => {
 
                                 <h3 className="text-3xl font-semibold">Before & After</h3>
                             </div>
+
+                            <div className="flex items-center gap-2 rounded-full border border-gray-200 bg-white/60 p-1.5 shadow-sm">
+                                {(["Hair", "Face"] as const).map((type) => (
+                                    <button
+                                        key={type}
+                                        type="button"
+                                        onClick={() => setActiveResultType(type)}
+                                        className={`rounded-full px-6 py-2 text-sm font-medium transition-all duration-300 ${activeResultType === type
+                                            ? "bg-[#D4AF37] text-white shadow-md"
+                                            : "text-gray-700 hover:bg-gray-100/50 hover:text-black"
+                                            }`}
+                                    >
+                                        {type} Results
+                                    </button>
+                                ))}
+                            </div>
                         </div>
 
-                        <Carousel
-                            responsive={responsive}
-                            infinite
-                            autoPlay
-                            autoPlaySpeed={4000}
-                            arrows={false}
-                            showDots
-                            swipeable
-                            draggable
-                        >
-                            {results.map((item, index) => (
-                                <div key={index} className="overflow-hidden md:mx-2 rounded-lg shadow-sm bg-white">
-                                    <div className="grid grid-cols-1">
-                                        {/* Before */}
-                                        <div className="relative border-r border-gray-200">
-                                            <Image
-                                                src={item.beforeImagePath}
-                                                alt="Before Treatment"
-                                                width={750}
-                                                height={938}
-                                            />
+                        {filteredResults.length > 0 ? (
+                            <Carousel
+                                responsive={responsive}
+                                infinite
+                                autoPlay
+                                autoPlaySpeed={4000}
+                                swipeable
+                                draggable
+                            >
+                                {filteredResults.map((item, index) => (
+                                    <div key={index} className="overflow-hidden md:mx-2 rounded-lg shadow-sm bg-white">
+                                        <div className="grid grid-cols-1">
+                                            <div className="relative border-r border-gray-200">
+                                                <ImageWithSkeleton
+                                                    src={item.beforeImagePath}
+                                                    alt="Before Treatment"
+                                                    width={750}
+                                                    height={938}
+                                                />
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            ))}
-                        </Carousel>
+                                ))}
+                            </Carousel>
+                        ) : (
+                            <p className="py-10 text-center text-gray-500">
+                                No {activeResultType.toLowerCase()} treatment results available at the moment.
+                            </p>
+                        )}
                     </div>
                 </div>
             )}
