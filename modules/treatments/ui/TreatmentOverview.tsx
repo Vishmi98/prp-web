@@ -159,7 +159,7 @@ const TreatmentOverview = ({ treatment }: TreatmentDetailsProps) => {
             {results && results.length > 0 && (
                 <div className="bg-[#D4AF37]/10 py-20">
                     <div className="w-[90%] xl:w-[85%] mx-auto">
-                        <div className="flex items-center justify-between mb-6">
+                        <div className="flex flex-col items-center md:flex-row md:items-end justify-between mb-14 gap-6 text-center md:text-start">
                             <div>
                                 <p className="uppercase tracking-[3px] text-gold text-sm mb-2 font-medium">
                                     Real Client Results
