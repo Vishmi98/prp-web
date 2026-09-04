@@ -48,9 +48,26 @@ const AddServiceModal: FC<AddModalProps> = ({ isOpen, onClose, handleReload }) =
 
     const handleSubmit = async (
         values: ServiceDataType,
-        { resetForm, setSubmitting }: { resetForm: () => void; setSubmitting: (isSubmitting: boolean) => void }
+        {
+            resetForm,
+            setSubmitting,
+            setFieldError,
+        }: {
+            resetForm: () => void;
+            setSubmitting: (isSubmitting: boolean) => void;
+            setFieldError: (field: string, message: string) => void;
+        }
     ) => {
         try {
+            if (!thumbnailImage) {
+                if (!thumbnailImage) setFieldError("thumbnailImage", "Thumbnail image is required");
+
+                // Add toast notifications here
+                toast.error("Please upload required image (Thumbnail).");
+                setSubmitting(false);
+                return;
+            }
+
             setIsLoading(true);
 
             const formData = new FormData();
@@ -113,7 +130,7 @@ const AddServiceModal: FC<AddModalProps> = ({ isOpen, onClose, handleReload }) =
                                         name="description"
                                         as="textarea"
                                         rows={4}
-                                        className="border border-gray-300 rounded-sm text-sm p-2 w-full h-24  resize-none"
+                                        className="border border-gray-300 rounded-sm text-sm p-2 w-full h-20 resize-none"
                                     />
                                     <ErrorMessage
                                         name="description"
@@ -168,7 +185,7 @@ const AddServiceModal: FC<AddModalProps> = ({ isOpen, onClose, handleReload }) =
                                     type="submit"
                                     className="px-4 py-2 text-sm bg-black text-white rounded-lg w-full cursor-pointer"
                                 >
-                                    Add
+                                    {isLoading ? "Adding..." : "Add"}
                                 </button>
                             </div>
                         </Form>

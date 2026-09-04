@@ -3,10 +3,13 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { RiEdit2Fill } from "react-icons/ri";
+import { RiDeleteBin6Line } from "react-icons/ri";
+import { PiPlus } from "react-icons/pi";
 import { toast } from "react-toastify";
 
 import { TreatmentDataType } from "../../treatments.types";
 import {
+  deleteTreatment,
   getTreatments,
   publishTreatment,
 } from "../../treatments.service";
@@ -16,7 +19,6 @@ import AddTreatmentResultModal from "./AddTreatmentResultModal";
 import { TableProps } from "@/constants/types";
 import { ConfirmModal } from "@/components/ConfirmModal";
 import CommonTable, { ColumnType } from "@/components/CommonTable";
-import { PiPlus } from "react-icons/pi";
 
 
 const TreatmentsTable: React.FC<TableProps> = ({ reload }) => {
@@ -31,9 +33,13 @@ const TreatmentsTable: React.FC<TableProps> = ({ reload }) => {
 
   const [publishTarget, setPublishTarget] =
     useState<TreatmentDataType | null>(null);
+  const [deleteTarget, setDeleteTarget] =
+    useState<TreatmentDataType | null>(null);
   const [selectedEditTreatment, setSelectedEditTreatment] =
     useState<TreatmentDataType | null>(null);
   const [isPublishModalOpen, setIsPublishModalOpen] =
+    useState(false);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] =
     useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [selectedResultTreatment, setSelectedResultTreatment] = useState<TreatmentDataType | null>(null);
@@ -103,6 +109,31 @@ const TreatmentsTable: React.FC<TableProps> = ({ reload }) => {
     setIsEditModalOpen(true);
   };
 
+  const handleDeleteTreatment = (treatment: TreatmentDataType) => {
+    setDeleteTarget(treatment);
+    setIsDeleteModalOpen(true);
+  };
+
+  const confirmDeleteTreatment = async () => {
+    if (!deleteTarget) return;
+
+    try {
+      const response = await deleteTreatment(deleteTarget.id);
+
+      if (response.success) {
+        toast.success(response.message);
+        fetchData(page);
+      } else {
+        toast.error(response.message);
+      }
+    } catch {
+      toast.error("Error deleting treatment");
+    } finally {
+      setDeleteTarget(null);
+      setIsDeleteModalOpen(false);
+    }
+  };
+
   const columns: ColumnType<TreatmentDataType>[] = [
     {
       header: "Title",
@@ -159,17 +190,27 @@ const TreatmentsTable: React.FC<TableProps> = ({ reload }) => {
       )
     },
     {
-      header: "Edit",
+      header: "",
       accessor: "",
       render: (treatment) => (
-        <button
-          onClick={() => handleEditTreatment(treatment)}
-          className="text-primary hover:text-primary/80 transition-colors"
-        >
-          <RiEdit2Fill className="w-4 h-4" />
-        </button>
+        <div className="space-x-5">
+          <button
+            onClick={() => handleEditTreatment(treatment)}
+            className="text-blue-500 hover:text-blue-700 transition-colors cursor-pointer"
+          >
+            <RiEdit2Fill className="w-4 h-4" />
+          </button>
+          <button
+            onClick={() => handleDeleteTreatment(treatment)}
+            className="text-red-500 hover:text-red-700 transition-colors cursor-pointer disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:text-red-500"
+            title={treatment.isPublish ? "Published treatments cannot be deleted" : "Delete Treatment"}
+            disabled={treatment.isPublish}
+          >
+            <RiDeleteBin6Line className="w-4 h-4" />
+          </button>
+        </div>
       ),
-    },
+    }
   ];
 
   return (
@@ -366,23 +407,28 @@ const TreatmentsTable: React.FC<TableProps> = ({ reload }) => {
         )}
       />
 
+      {/* Publish Modal */}
       <ConfirmModal
         isOpen={isPublishModalOpen}
         onClose={() => {
-
           setIsPublishModalOpen(false);
           setPublishTarget(null);
-
         }}
         onConfirm={confirmPublishToggle}
-        message={`
-          Are you sure you want to 
-          ${publishTarget?.isPublish
-            ? "unpublish"
-            : "publish"
-          }
-          this treatment?
-        `}
+        message={`Are you sure you want to ${publishTarget?.isPublish ? "unpublish" : "publish"
+          } this treatment?`}
+      />
+
+      {/* Delete Modal - Cleaned up and moved to root JSX level */}
+      <ConfirmModal
+        isOpen={isDeleteModalOpen}
+        onClose={() => {
+          setIsDeleteModalOpen(false);
+          setDeleteTarget(null);
+        }}
+        onConfirm={confirmDeleteTreatment}
+        message={`Are you sure you want to delete ${deleteTarget?.title || "this treatment"
+          }?`}
       />
 
       {selectedEditTreatment && (
@@ -413,6 +459,5 @@ const TreatmentsTable: React.FC<TableProps> = ({ reload }) => {
   );
 
 };
-
 
 export default TreatmentsTable;

@@ -247,7 +247,7 @@ const EditBlogModal: React.FC<EditBlogModalProps> = ({ isOpen, onClose, initialV
                                     type="submit"
                                     className="px-4 py-2 text-sm bg-black text-white rounded-lg w-full cursor-pointer"
                                 >
-                                    Update
+                                    {isLoading ? "Updating..." : "Update"}
                                 </button>
                             </div>
                         </Form>

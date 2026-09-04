@@ -1,8 +1,10 @@
-import Image from "next/image";
 import Link from "next/link";
 import { BiCalendar, BiArrowBack } from "react-icons/bi";
 
 import { BlogDataType } from "../blogs.types";
+
+import ImageWithSkeleton from "@/components/ImageWithSkeleton";
+
 
 interface Props {
     blog: BlogDataType;
@@ -40,7 +42,7 @@ const BlogOverview = ({ blog }: Props) => {
 
                     <div className="relative w-full aspect-[14/7] md:aspect-[16/7] rounded-xl md:rounded-3xl overflow-hidden shadow-xl">
 
-                        <Image
+                        <ImageWithSkeleton
                             src={blog.coverImagePath}
                             alt={blog.title}
                             fill
@@ -60,8 +62,6 @@ const BlogOverview = ({ blog }: Props) => {
                     <div
                         className="
                         md:leading-8
-                        text-sm
-                        md:text-lg
                         space-y-8
                     "
                     >

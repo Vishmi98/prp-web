@@ -42,18 +42,21 @@ export const addTreatmentValidationSchema = Yup.object().shape({
     shortDescription: Yup.string()
         .required("Short description is required")
         .min(
-            100,
-            "Short description must be at least 100 characters"
+            150,
+            "Short description must be at least 150 characters"
         )
         .max(
-            300,
-            "Short description cannot exceed 300 characters"
+            200,
+            "Short description cannot exceed 200 characters"
         ),
     description: Yup.string()
         .required("Description is required")
         .min(
-            500,
-            "Description must be at least 500 characters"
+            600,
+            "Description must be at least 600 characters"
+        ).max(
+            800,
+            "Description cannot exceed 800 characters"
         ),
     overview: Yup.object().shape({
         numberOfTreatments: Yup.number()
@@ -63,11 +66,32 @@ export const addTreatmentValidationSchema = Yup.object().shape({
                 "Minimum treatment count is 1"
             ),
         treatmentTime: Yup.string()
-            .required("Treatment time is required"),
+            .required("Treatment time is required")
+            .min(
+                10,
+                "Treatment time must be at least 10 characters"
+            ).max(
+                30,
+                "Treatment time cannot exceed 30 characters"
+            ),
         recoveryTime: Yup.string()
-            .required("Recovery time is required"),
+            .required("Recovery time is required")
+            .min(
+                10,
+                "Recovery time must be at least 10 characters"
+            ).max(
+                50,
+                "Recovery time cannot exceed 50 characters"
+            ),
         maximumResults: Yup.string()
-            .required("Maximum results is required"),
+            .required("Maximum results is required")
+            .min(
+                10,
+                "Maximum results must be at least 10 characters"
+            ).max(
+                80,
+                "Maximum results cannot exceed 80 characters"
+            ),
         pricing: Yup.object().shape({
             amount: Yup.number()
                 .required("Price amount is required")
@@ -78,26 +102,33 @@ export const addTreatmentValidationSchema = Yup.object().shape({
             currency: Yup.string()
                 .required("Currency is required"),
             description: Yup.string()
-                .required("Pricing description is required"),
+                .required("Pricing description is required")
+                .min(
+                    10,
+                    "Pricing description must be at least 10 characters"
+                ).max(
+                    80,
+                    "Pricing description cannot exceed 80 characters"
+                ),
         }),
     }),
     benefits: Yup.array()
         .of(
             Yup.string()
                 .required("Benefit cannot be empty")
+                .min(10, "Benefit must be at least 10 characters")
+                .max(200, "Benefit cannot exceed 200 characters")
         )
-        .min(
-            1,
-            "At least one benefit is required"
-        ),
+        .min(1, "At least one benefit is required"),
+
     procedureSteps: Yup.array()
         .of(
             Yup.string()
                 .required("Procedure step cannot be empty")
+                .min(10, "Procedure step must be at least 10 characters")
+                .max(300, "Procedure step cannot exceed 300 characters")
         )
-        .min(
-            1,
-            "At least one procedure step is required"
-        ),
+        .min(1, "At least one procedure step is required"),
+        
     isPublish: Yup.boolean(),
 });

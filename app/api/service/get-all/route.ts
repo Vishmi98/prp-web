@@ -35,7 +35,7 @@ export async function POST(req: NextRequest) {
             });
         } else {
             services = await ServiceModel.find({ isPublish: true })
-                .sort({ createdAt: -1 })
+                .sort({ createdAt: 1 })
                 .lean();
 
             return sendSuccessResponse("All services fetched successfully", {

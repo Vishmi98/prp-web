@@ -80,7 +80,7 @@ const TreatmentOverview = ({ treatment }: TreatmentDetailsProps) => {
 
                         {/* Right Image */}
                         <div className="relative">
-                            <div className="relative h-[380px] md:h-[600px] rounded-lg overflow-hidden shadow-lg bg-gray-100">
+                            <div className="relative h-[380px] md:h-[520px] rounded-lg overflow-hidden shadow-lg bg-gray-100">
                                 {thumbnailImagePath ? (
                                     <ImageWithSkeleton
                                         src={thumbnailImagePath}

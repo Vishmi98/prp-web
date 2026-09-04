@@ -51,9 +51,26 @@ const AddGiftCardModal: FC<AddModalProps> = ({ isOpen, onClose, handleReload }) 
 
     const handleSubmit = async (
         values: GiftCardDataType,
-        { resetForm, setSubmitting }: { resetForm: () => void; setSubmitting: (isSubmitting: boolean) => void }
+        {
+            resetForm,
+            setSubmitting,
+            setFieldError,
+        }: {
+            resetForm: () => void;
+            setSubmitting: (isSubmitting: boolean) => void;
+            setFieldError: (field: string, message: string) => void;
+        }
     ) => {
         try {
+            if (!image) {
+                if (!image) setFieldError("image", "Image is required");
+
+                // Add toast notifications here
+                toast.error("Please upload required image (Image).");
+                setSubmitting(false);
+                return;
+            }
+
             setIsLoading(true);
 
             const formData = new FormData();
@@ -178,7 +195,7 @@ const AddGiftCardModal: FC<AddModalProps> = ({ isOpen, onClose, handleReload }) 
                                     type="submit"
                                     className="px-4 py-2 text-sm bg-black text-white rounded-lg w-full cursor-pointer"
                                 >
-                                    Add
+                                    {isLoading ? "Adding..." : "Add"}
                                 </button>
                             </div>
                         </Form>

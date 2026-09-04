@@ -39,7 +39,7 @@ const OurStory = () => {
                             </p>
                         </div>
 
-                        <div className="md:mt-10 mt-6 flex gap-12 border-t border-gray-100 pt-8">
+                        {/* <div className="md:mt-10 mt-6 flex gap-12 border-t border-gray-100 pt-8">
                             <div>
                                 <h3 className="md:text-3xl text-2xl font-bold mb-2">10+</h3>
                                 <p className="text-gray-500">Years Experience</p>
@@ -48,7 +48,7 @@ const OurStory = () => {
                                 <h3 className="md:text-3xl text-2xl font-bold mb-2">5k+</h3>
                                 <p className="text-gray-500">Happy Clients</p>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
 
                 </div>

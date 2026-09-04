@@ -19,7 +19,7 @@ const GiftCards = () => {
         <>
             <div className="overflow-y-auto w-full h-full scrollbar-hide">
                 <div className="flex justify-between items-center mb-6">
-                    <h2 className="font-semibold text-lg">GiftCards</h2>
+                    <h2 className="font-semibold text-lg">Gift Cards</h2>
                     <div className="flex justify-end">
                         <button
                             onClick={handleClickOpen}

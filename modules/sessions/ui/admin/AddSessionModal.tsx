@@ -12,7 +12,6 @@ import { addSessionInitialValues, addSessionValidationSchema } from "../../sessi
 import { AddModalProps } from "@/constants/types";
 
 
-
 const AddSessionModal: FC<AddModalProps> = ({ isOpen, onClose, handleReload }) => {
     const [isLoading, setIsLoading] = useState(false);
 

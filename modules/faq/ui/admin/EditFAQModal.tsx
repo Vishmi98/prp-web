@@ -37,7 +37,7 @@ const EditFAQModal: FC<EditFAQModalProps> = ({ isOpen, onClose, reloadData, init
                 {({ isSubmitting }) => <Form className="space-y-4 p-4">
                     <div className="flex flex-col gap-1"><label htmlFor="question" className="text-sm font-medium text-gray-700">Question <span className="text-red-500">*</span></label><Field id="question" name="question" className="w-full rounded-md border border-gray-300 p-2 text-sm" /><ErrorMessage name="question" component="div" className="text-xs text-red-600" /></div>
                     <div className="flex flex-col gap-1"><label htmlFor="answer" className="text-sm font-medium text-gray-700">Answer <span className="text-red-500">*</span></label><Field as="textarea" id="answer" name="answer" rows={5} className="w-full resize-none rounded-md border border-gray-300 p-2 text-sm" /><ErrorMessage name="answer" component="div" className="text-xs text-red-600" /></div>
-                    <div className="flex gap-2"><button type="button" onClick={onClose} className="w-full rounded-lg bg-gray-200 px-4 py-2 text-sm">Cancel</button><button type="submit" disabled={loading || isSubmitting} className="w-full rounded-lg bg-black px-4 py-2 text-sm text-white">{loading ? "Saving..." : "Save Changes"}</button></div>
+                    <div className="flex gap-2"><button type="button" onClick={onClose} className="w-full rounded-lg bg-gray-200 px-4 py-2 text-sm">Cancel</button><button type="submit" disabled={loading || isSubmitting} className="w-full rounded-lg bg-black px-4 py-2 text-sm text-white">{loading ? "Updating..." : "Update"}</button></div>
                 </Form>}
             </Formik>
         </div>

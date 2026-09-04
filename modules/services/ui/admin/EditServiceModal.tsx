@@ -178,7 +178,7 @@ const EditServiceModal: React.FC<EditServiceModalProps> = ({ isOpen, onClose, in
                                     type="submit"
                                     className="px-4 py-2 text-sm bg-black text-white rounded-lg w-full cursor-pointer"
                                 >
-                                    Update
+                                    {isLoading ? "Updating..." : "Update"}
                                 </button>
                             </div>
                         </Form>

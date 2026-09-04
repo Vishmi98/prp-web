@@ -29,13 +29,13 @@ export const addBlogValidationSchema = Yup.object().shape({
     paragraph1: Yup.string()
         .required("Paragraph 1 is required")
         .min(300, "Paragraph 1 must be at least 300 characters")
-        .max(500, "Paragraph 1 cannot exceed 500 characters"),
+        .max(1000, "Paragraph 1 cannot exceed 1000 characters"),
 
     paragraph2: Yup.string()
         .min(300, "Paragraph 2 must be at least 300 characters")
-        .max(500, "Paragraph 2 cannot exceed 500 characters"),
+        .max(1000, "Paragraph 2 cannot exceed 1000 characters"),
 
     paragraph3: Yup.string()
         .min(300, "Paragraph 3 must be at least 300 characters")
-        .max(500, "Paragraph 3 cannot exceed 500 characters"),
+        .max(1000, "Paragraph 3 cannot exceed 1000 characters"),
 });

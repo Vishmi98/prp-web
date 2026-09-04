@@ -40,6 +40,20 @@ export const publishTreatment = async (id: number, isPublish: boolean): Promise<
     };
 };
 
+export const deleteTreatment = async (id: number): Promise<PublishTreatmentResponseDataType> => {
+    const response: PublishTreatmentResponseDataType = await apiCall({
+        url: `${URL}/treatment/delete-by-id`,
+        method: "DELETE",
+        body: { id },
+    });
+
+    return {
+        success: response.success,
+        message: response.message,
+        data: response.data,
+    };
+};
+
 export const createTreatment = async (data: FormData) => {
     const res = await axios.post(`${URL}/treatment/create`, data, {
         headers: { 'Content-Type': 'multipart/form-data' }

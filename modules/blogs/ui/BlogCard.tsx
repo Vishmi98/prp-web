@@ -1,11 +1,11 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { FiArrowUpRight, FiCalendar } from "react-icons/fi";
 
 import { BlogDataType } from "../blogs.types";
+import ImageWithSkeleton from "@/components/ImageWithSkeleton";
 
 
 interface BlogCardProps {
@@ -22,7 +22,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
             {/* Thumbnail Image */}
             <div className="relative w-full h-60 overflow-hidden bg-gray-100">
                 {blog.thumbnailImagePath ? (
-                    <Image
+                    <ImageWithSkeleton
                         src={blog.thumbnailImagePath}
                         alt={blog.title}
                         fill

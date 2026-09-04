@@ -7,11 +7,11 @@ import { toast, ToastContainer } from "react-toastify";
 import { CgClose } from "react-icons/cg";
 
 import { EditGiftCardModalProps, GiftCardDataType } from "../../pricing.types";
+import { updateGiftCard } from "../../pricing.service";
+import { addGiftCardValidationSchema } from "../../pricing.utils";
 
 import { MAX_SIZE_MB } from "@/constants/data";
 import CropModal from "@/components/ImageCropper";
-import { updateGiftCard } from "../../pricing.service";
-import { addGiftCardValidationSchema } from "../../pricing.utils";
 
 
 const EditGiftCardModal: React.FC<EditGiftCardModalProps> = ({ isOpen, onClose, initialValues, reloadData }) => {
@@ -187,7 +187,7 @@ const EditGiftCardModal: React.FC<EditGiftCardModalProps> = ({ isOpen, onClose, 
                                     type="submit"
                                     className="px-4 py-2 text-sm bg-black text-white rounded-lg w-full cursor-pointer"
                                 >
-                                    Update
+                                    {isLoading ? "Updating..." : "Update"}
                                 </button>
                             </div>
                         </Form>

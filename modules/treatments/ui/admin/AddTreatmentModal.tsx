@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Formik, Form, FormikProps, ErrorMessage, Field, FieldArray } from "formik";
 import { toast, ToastContainer } from "react-toastify";
 import { CgClose } from "react-icons/cg";
+import { FiDelete } from "react-icons/fi";
 
 import { TreatmentDataType } from "../../treatments.types";
 import { createTreatment } from "../../treatments.service";
@@ -13,7 +14,6 @@ import { addTreatmentInitialValues, addTreatmentValidationSchema } from "../../t
 import { MAX_SIZE_MB } from "@/constants/data";
 import CropModal from "@/components/ImageCropper";
 import { AddModalProps } from "@/constants/types";
-import { FiDelete } from "react-icons/fi";
 import { slugify } from "@/utils/slug";
 
 
@@ -52,9 +52,27 @@ const AddTreatmentModal: FC<AddModalProps> = ({ isOpen, onClose, handleReload })
 
     const handleSubmit = async (
         values: TreatmentDataType,
-        { resetForm, setSubmitting }: { resetForm: () => void; setSubmitting: (isSubmitting: boolean) => void }
+        {
+            resetForm,
+            setSubmitting,
+            setFieldError,
+        }: {
+            resetForm: () => void;
+            setSubmitting: (isSubmitting: boolean) => void;
+            setFieldError: (field: string, message: string) => void;
+        }
     ) => {
         try {
+            if (!thumbnailImage || !coverImage) {
+                if (!thumbnailImage) setFieldError("thumbnailImage", "Thumbnail image is required");
+                if (!coverImage) setFieldError("coverImage", "Cover image is required");
+
+                // Add toast notifications here
+                toast.error("Please upload both required images (Thumbnail & Cover).");
+                setSubmitting(false);
+                return;
+            }
+            
             setIsLoading(true);
 
             const formData = new FormData();
@@ -345,7 +363,7 @@ const AddTreatmentModal: FC<AddModalProps> = ({ isOpen, onClose, handleReload })
                                     type="submit"
                                     className="px-4 py-2 text-sm bg-black text-white rounded-lg w-full cursor-pointer"
                                 >
-                                    Add
+                                    {isLoading ? "Adding..." : "Add"}
                                 </button>
                             </div>
                         </Form>

@@ -15,12 +15,14 @@ export const addServiceInitialValues: ServiceDataType = {
 export const addServiceValidationSchema = Yup.object().shape({
     title: Yup.string()
         .required("Title is required")
+        .min(10, "Title must be at least 10 characters")
+        .max(30, "Title cannot exceed 30 characters")
         .trim(),
 
     description: Yup.string()
         .required("Description is required")
         .min(10, "Description must be at least 10 characters")
-        .max(100, "Description cannot exceed 100 characters"),
+        .max(80, "Description cannot exceed 80 characters"),
 
     isPublish: Yup.boolean().default(false),
 });

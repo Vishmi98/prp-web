@@ -9,10 +9,10 @@ import { FiDelete } from "react-icons/fi";
 
 import { EditTreatmentModalProps, TreatmentDataType } from "../../treatments.types";
 import { addTreatmentValidationSchema } from "../../treatments.utils";
+import { updateTreatment } from "../../treatments.service";
 
 import { MAX_SIZE_MB } from "@/constants/data";
 import CropModal from "@/components/ImageCropper";
-import { updateTreatment } from "../../treatments.service";
 
 
 const EditTreatmentModal: FC<EditTreatmentModalProps> = ({ isOpen, onClose, initialValues, reloadData }) => {
@@ -355,7 +355,7 @@ const EditTreatmentModal: FC<EditTreatmentModalProps> = ({ isOpen, onClose, init
                                     type="submit"
                                     className="px-4 py-2 text-sm bg-black text-white rounded-lg w-full cursor-pointer"
                                 >
-                                    Update
+                                    {isLoading ? "Updating..." : "Update"}
                                 </button>
                             </div>
                         </Form>

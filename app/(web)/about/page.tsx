@@ -15,8 +15,8 @@ const AboutPage = () => {
             <OurStory />
             <Mission />
             <Team />
-            <SuccessStories />
-            <FrequentlyAskedQuestions />
+            {/* <SuccessStories /> */}
+            {/* <FrequentlyAskedQuestions /> */}
         </main>
     )
 }
