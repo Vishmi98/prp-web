@@ -67,7 +67,7 @@ const ContactPage = () => {
                             <div className="space-y-8 mt-10">
 
                                 {/* Phone */}
-                                <div className="flex items-start gap-5">
+                                <div className="flex items-start gap-3 md:gap-5">
                                     <div className="md:w-12 md:h-12 w-10 h-10 rounded-full bg-[#D4AF37]/10 flex items-center justify-center shrink-0">
                                         <FiPhoneCall
                                             className="text-gold"
@@ -87,7 +87,7 @@ const ContactPage = () => {
                                 </div>
 
                                 {/* Email */}
-                                <div className="flex items-start gap-5">
+                                <div className="flex items-start gap-3 md:gap-5">
                                     <div className="md:w-12 md:h-12 w-10 h-10 rounded-full bg-[#D4AF37]/10 flex items-center justify-center shrink-0">
                                         <FiMail
                                             className="text-gold"
@@ -108,7 +108,7 @@ const ContactPage = () => {
                                 </div>
 
                                 {/* Location */}
-                                <div className="flex items-start gap-5">
+                                <div className="flex items-start gap-3 md:gap-5">
                                     <div className="md:w-12 md:h-12 w-10 h-10 rounded-full bg-[#D4AF37]/10 flex items-center justify-center shrink-0">
                                         <FiMapPin
                                             className="text-gold"
@@ -128,7 +128,7 @@ const ContactPage = () => {
                                 </div>
 
                                 {/* Hours */}
-                                <div className="flex items-start gap-5">
+                                <div className="flex items-start gap-3 md:gap-5">
                                     <div className="md:w-12 md:h-12 w-10 h-10 rounded-full bg-[#D4AF37]/10 flex items-center justify-center shrink-0">
                                         <FiClock
                                             className="text-gold"

@@ -12,7 +12,7 @@ const Hero = () => {
 
     return (
         <section className="relative h-screen flex items-center bg-white">
-            <div className="w-[90%] md:w-[85%] 2xl:w-[70%] mx-auto md:pt-20 2xl:pt-0">
+            <div className="w-[90%] md:w-[85%] 2xl:w-[70%] mx-auto pt-10 md:pt-20 2xl:pt-0">
                 <div className="flex flex-col lg:flex-row gap-12 lg:gap-30 2xl:gap-30 items-center">
                     {/* LEFT CONTENT */}
                     <div className="w-full lg:w-1/2">
@@ -36,7 +36,7 @@ const Hero = () => {
                     </div>
                     {/* RIGHT IMAGE */}
                     <div className="w-full lg:w-1/2 relative">
-                        <div className="relative h-[390px] md:h-[480px] 2xl:h-[610px] w-full rounded-sm overflow-hidden">
+                        <div className="relative h-[385px] md:h-[480px] 2xl:h-[610px] w-full rounded-sm overflow-hidden">
                             <ImageWithSkeleton
                                 src="/Alocuro machine.png"
                                 alt="Clinic Interior"

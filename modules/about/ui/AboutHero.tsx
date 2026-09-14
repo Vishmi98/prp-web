@@ -26,7 +26,7 @@ const AboutHero = () => {
 
                     {/* Right Contact Details Side */}
                     <div className="w-full lg:w-[45%]">
-                        <div className="bg-gray-50 border border-gray-100 rounded-sm p-5 md:p-10 shadow-lg relative overflow-hidden">
+                        <div className="bg-gray-50 border border-gray-100 rounded-sm p-4 md:p-10 shadow-lg relative overflow-hidden">
                             {/* Gold Top Border */}
                             <div className="absolute top-0 left-0 w-full h-1 bg-gold" />
 
@@ -36,7 +36,7 @@ const AboutHero = () => {
                                 {/* Phone */}
                                 <a
                                     href="tel:+61460351834"
-                                    className="flex items-start gap-4">
+                                    className="flex items-start gap-3 md:gap-4">
                                     <div className="w-10 h-10 rounded-full bg-[#D4AF37]/10 flex items-center justify-center text-gold shrink-0 mt-1">
                                         <BiPhoneCall size={20} />
                                     </div>
@@ -49,7 +49,7 @@ const AboutHero = () => {
                                 {/* Email */}
                                 <a
                                     href="mailto:admin@prp4skinandhair.com.au"
-                                    className="flex items-start gap-4">
+                                    className="flex items-start gap-3 md:gap-4">
                                     <div className="w-10 h-10 rounded-full bg-[#D4AF37]/10 flex items-center justify-center text-gold shrink-0 mt-1">
                                         <BiEnvelope size={20} />
                                     </div>
@@ -60,7 +60,7 @@ const AboutHero = () => {
                                 </a>
 
                                 {/* Location */}
-                                <div className="flex items-start gap-4">
+                                <div className="flex items-start gap-3 md:gap-4">
                                     <div className="w-10 h-10 rounded-full bg-[#D4AF37]/10 flex items-center justify-center text-gold shrink-0 mt-1">
                                         <BiMap size={20} />
                                     </div>
@@ -73,7 +73,7 @@ const AboutHero = () => {
                                 </div>
 
                                 {/* Hours */}
-                                <div className="flex items-start gap-4">
+                                <div className="flex items-start gap-3 md:gap-4">
                                     <div className="w-10 h-10 rounded-full bg-[#D4AF37]/10 flex items-center justify-center text-gold shrink-0 mt-1">
                                         <BiTime size={20} />
                                     </div>

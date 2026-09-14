@@ -11,7 +11,7 @@ const OurStory = () => {
 
                     {/* Image Side */}
                     <div className="w-full lg:w-1/2 relative">
-                        <div className="relative h-[400px] md:h-[500px] w-full rounded-sm overflow-hidden">
+                        <div className="relative h-[385px] md:h-[480px] 2xl:h-[610px] w-full rounded-sm overflow-hidden">
                             <ImageWithSkeleton
                                 src="/Alocuro machine.png"
                                 alt="Clinic Interior"

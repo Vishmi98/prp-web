@@ -16,7 +16,7 @@ const Mission = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {/* Mission */}
-                    <div className="bg-white p-10 shadow-sm hover:shadow-md transition-shadow border-t-4 border-[#D4AF37]">
+                    <div className="bg-white p-6 md:p-10 shadow-sm hover:shadow-md transition-shadow border-t-4 border-[#D4AF37]">
                         <div className="w-14 h-14 bg-[#D4AF37]/10 rounded-full flex items-center justify-center text-[#D4AF37] mb-6">
                             <BiTargetLock size={32} />
                         </div>
@@ -27,7 +27,7 @@ const Mission = () => {
                     </div>
 
                     {/* Care */}
-                    <div className="bg-white p-10 shadow-sm hover:shadow-md transition-shadow border-t-4 border-[#D4AF37]">
+                    <div className="bg-white p-6 md:p-10 shadow-sm hover:shadow-md transition-shadow border-t-4 border-[#D4AF37]">
                         <div className="w-14 h-14 bg-[#D4AF37]/10 rounded-full flex items-center justify-center text-[#D4AF37] mb-6">
                             <BiHeart size={32} />
                         </div>
@@ -38,7 +38,7 @@ const Mission = () => {
                     </div>
 
                     {/* Excellence */}
-                    <div className="bg-white p-10 shadow-sm hover:shadow-md transition-shadow border-t-4 border-[#D4AF37]">
+                    <div className="bg-white p-6 md:p-10 shadow-sm hover:shadow-md transition-shadow border-t-4 border-[#D4AF37]">
                         <div className="w-14 h-14 bg-[#D4AF37]/10 rounded-full flex items-center justify-center text-[#D4AF37] mb-6">
                             <BiShieldQuarter size={32} />
                         </div>
