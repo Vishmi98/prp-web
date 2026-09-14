@@ -17,6 +17,14 @@ const faqSchema = new mongoose.Schema(
             required: true,
             trim: true,
         },
+        answer2: {
+            type: String,
+            trim: true,
+        },
+        answer3: {
+            type: String,
+            trim: true,
+        },
         isPublish: {
             type: Boolean,
             default: false,

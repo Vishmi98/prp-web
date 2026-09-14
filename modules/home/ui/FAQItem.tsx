@@ -6,11 +6,13 @@ import { FiMinus, FiPlus } from "react-icons/fi";
 type FAQItemProps = {
     question: string;
     answer: string;
+    answer2?: string;
+    answer3?: string;
     isOpen: boolean;
     onToggle: () => void;
 };
 
-const FAQItem = ({ question, answer, isOpen, onToggle }: FAQItemProps) => {
+const FAQItem = ({ question, answer, answer2, answer3, isOpen, onToggle }: FAQItemProps) => {
     return (
         <div className="overflow-hidden border border-gray-200 bg-white transition-all duration-300">
             <button
@@ -34,8 +36,14 @@ const FAQItem = ({ question, answer, isOpen, onToggle }: FAQItemProps) => {
                     }`}
             >
                 <div className="overflow-hidden">
-                    <p className="px-5 pb-6 leading-relaxed text-gray-600 md:px-7">
+                    <p className="px-5 pb-4 leading-relaxed text-gray-600 md:px-7">
                         {answer}
+                    </p>
+                    <p className="px-5 pb-4 leading-relaxed text-gray-600 md:px-7">
+                        {answer2}
+                    </p>
+                    <p className="px-5 pb-4 leading-relaxed text-gray-600 md:px-7">
+                        {answer3}
                     </p>
                 </div>
             </div>

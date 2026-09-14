@@ -120,7 +120,7 @@ export default function ContactPractitionerSection() {
                     </div>
 
                     <p className="text-sm leading-relaxed text-stone-300">
-                        Experienced practitioner specializing in advanced PRP/PRF Skin and Hair Restoration treatments.
+                        Experienced Practitioner in Advanced PRP/PRF Skin and Hair Treatments
                     </p>
 
                     {/* Credentials Badges */}

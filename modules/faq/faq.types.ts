@@ -2,6 +2,8 @@ export type FAQDataType = {
     id: number;
     question: string;
     answer: string;
+    answer2?: string;
+    answer3?: string;
     isPublish?: boolean;
 };
 
@@ -27,6 +29,8 @@ export type FAQFormValues = {
     id: number;
     question: string;
     answer: string;
+    answer2?: string;
+    answer3?: string;
 };
 
 export type EditFAQModalProps = {

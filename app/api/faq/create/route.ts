@@ -10,7 +10,7 @@ export async function POST(req: NextRequest) {
         await connectDB();
 
         const body = await req.json();
-        const { question, answer } = body;
+        const { question, answer, answer2, answer3 } = body;
 
         if (!question?.trim() || !answer?.trim()) {
             return sendErrorResponse("Question and answer are required", 200);
@@ -23,6 +23,8 @@ export async function POST(req: NextRequest) {
             id: nextId,
             question: question.trim(),
             answer: answer.trim(),
+            answer2: answer2.trim(),
+            answer3: answer3.trim()
         });
 
         return sendSuccessResponse("FAQ created successfully", { faq });

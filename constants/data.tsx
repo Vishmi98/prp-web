@@ -137,24 +137,40 @@ export const RESULTS_DATA = [
 
 export const FAQ_DATA = [
     {
-        question: "How many PRP sessions will I need?",
-        answer:
-            "Most clients achieve optimal results after 3 to 6 sessions depending on their treatment goals, hair condition, and skin type. Our specialists will create a personalized treatment plan during your consultation.",
+        question: "Does PRP/PRF hurt?",
+        answer: "Some discomfort may occur during blood collection and treatment. The level of discomfort varies between individuals and depends on the area being treated and the treatment technique.",
+        answer2: "We aim to make the procedure as comfortable as reasonably possible and will discuss comfort measures with you before treatment."
     },
     {
-        question: "Is PRP treatment painful?",
-        answer:
-            "PRP treatments involve minimal discomfort. A numbing cream is usually applied before the procedure to ensure a comfortable experience throughout the session.",
+        question: "What can I expect after treatment?",
+        answer: "You may experience temporary redness, swelling, tenderness or bruising in the treated area. These effects vary between individuals and generally settle with time.",
+        answer2: "You will receive specific aftercare instructions following your treatment."
     },
     {
-        question: "How long does recovery take?",
-        answer:
-            "Recovery time is usually minimal. Most clients return to daily activities within 24 hours, with mild redness or swelling disappearing quickly.",
+        question: "Are there any risks or side effects?",
+        answer: "As with any procedure involving injections and blood collection, PRP/PRF treatment can have risks and side effects.",
+        answer2: "These may include pain or discomfort, bruising, swelling, redness, bleeding and infection. Your individual risks and suitability will be discussed as part of the consultation and medical assessment."
     },
     {
-        question: "When will I see results?",
-        answer:
-            "Visible improvements can often be seen within a few weeks, with full results gradually developing over several months as collagen and tissue regeneration occur naturally.",
+        question: "Can I return to work after my treatment? ",
+        answer: "This depends on the treatment area, the procedure performed and your individual circumstances. Some clients may be comfortable returning to normal activities relatively quickly, while others may prefer some time for any temporary redness, swelling or tenderness to settle.",
+        answer2: "We will provide you with appropriate aftercare information."
+    },
+    {
+        question: "Do you guarantee results?",
+        answer: "No.",
+        answer2: "Every person responds differently to treatment. We do not guarantee specific results or outcomes.",
+        answer3: "Our focus is on careful assessment, appropriate treatment planning, medical oversight and providing treatment that is tailored to the individual."
+    },
+    {
+        question: "Why do you assess me before recommending treatment?",
+        answer: "Because PRP/PRF is not a one-size-fits-all treatment.",
+        answer2: "A thorough assessment allows us to understand your concerns, consider your individual circumstances and determine whether PRP/PRF may be appropriate for you. Where appropriate, this is followed by an independent medical consultation through InstantScripts.",
+    },
+    {
+        question: "What happens if I have a concern after my treatment?",
+        answer: "Please contact our clinic if you have questions or concerns following your procedure.",
+        answer2: "Where a concern requires medical assessment or advice, we can liaise with the medical team involved in your care and direct you to appropriate medical attention when necessary.",
     },
 ];
 

@@ -199,8 +199,14 @@ const ContactPage = () => {
                                             }`}
                                     >
                                         <div className="overflow-hidden">
-                                            <div className="px-6 md:px-8 pb-8 text-gray-600 leading-relaxed">
+                                            <div className="px-6 md:px-8 pb-4 text-gray-600 leading-relaxed">
                                                 {faq.answer}
+                                            </div>
+                                            <div className="px-6 md:px-8 pb-4 text-gray-600 leading-relaxed">
+                                                {faq.answer2}
+                                            </div>
+                                            <div className="px-6 md:px-8 pb-4 text-gray-600 leading-relaxed">
+                                                {faq.answer3}
                                             </div>
                                         </div>
                                     </div>

@@ -107,9 +107,11 @@ const FAQsTable: React.FC<TableProps> = ({ reload }) => {
                     fetchData(newPage);
                 }}
                 renderExpandedRow={(faq) => (
-                    <div>
+                    <div className="space-y-2">
                         <p className="font-semibold">Answer:</p>
                         <p>{faq.answer}</p>
+                        <p>{faq.answer2}</p>
+                        <p>{faq.answer3}</p>
                     </div>
                 )}
             />

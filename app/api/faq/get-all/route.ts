@@ -31,7 +31,7 @@ export async function POST(req: NextRequest) {
             });
         }
 
-        const faqs = await FAQModel.find().sort({ createdAt: -1 }).lean();
+        const faqs = await FAQModel.find().sort({ createdAt: 1 }).lean();
 
         return sendSuccessResponse("All FAQs fetched successfully", {
             totalFaqs,

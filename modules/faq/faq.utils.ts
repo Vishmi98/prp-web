@@ -6,7 +6,9 @@ import { FAQFormValues } from "./faq.types";
 export const faqInitialValues: FAQFormValues = { 
     id: 0, 
     question: "", 
-    answer: "" 
+    answer: "",
+    answer2: "",
+    answer3: "" 
 };
 
 export const faqValidationSchema = Yup.object({

@@ -17,7 +17,7 @@ const FAQModal: FC<AddModalProps> = ({ isOpen, onClose, handleReload }) => {
     if (!isOpen) return null;
 
     const submit = async (
-        values: FAQFormValues, 
+        values: FAQFormValues,
         { resetForm, setSubmitting }: { resetForm: () => void; setSubmitting: (isSubmitting: boolean) => void }
     ) => {
         try {
@@ -44,7 +44,7 @@ const FAQModal: FC<AddModalProps> = ({ isOpen, onClose, handleReload }) => {
                     <button type="button" onClick={onClose} aria-label="Close"><CgClose /></button>
                 </div>
                 <Formik initialValues={faqInitialValues} validationSchema={faqValidationSchema} onSubmit={submit}>
-                    {({ isSubmitting }) => <Form className="space-y-4 p-4">
+                    {({ isSubmitting }) => <Form className="space-y-3 p-4">
                         <FAQFields />
                         <div className="flex gap-2">
                             <button type="button" onClick={onClose} className="w-full rounded-lg bg-gray-200 px-4 py-2 text-sm">Cancel</button>
@@ -65,8 +65,18 @@ export const FAQFields = () => <>
     </div>
     <div className="flex flex-col gap-1">
         <label htmlFor="answer" className="text-sm font-medium text-gray-700">Answer <span className="text-red-500">*</span></label>
-        <Field as="textarea" id="answer" name="answer" rows={5} className="w-full resize-none rounded-md border border-gray-300 p-2 text-sm" />
+        <Field as="textarea" id="answer" name="answer" rows={3} className="w-full resize-none rounded-md border border-gray-300 p-2 text-sm" />
         <ErrorMessage name="answer" component="div" className="text-xs text-red-600" />
+    </div>
+    <div className="flex flex-col gap-1">
+        <label htmlFor="answer2" className="text-sm font-medium text-gray-700">Answer2 <span className="text-red-500">*</span></label>
+        <Field as="textarea" id="answer2" name="answer2" rows={3} className="w-full resize-none rounded-md border border-gray-300 p-2 text-sm" />
+        <ErrorMessage name="answer2" component="div" className="text-xs text-red-600" />
+    </div>
+    <div className="flex flex-col gap-1">
+        <label htmlFor="answer3" className="text-sm font-medium text-gray-700">Answer3 <span className="text-red-500">*</span></label>
+        <Field as="textarea" id="answer3" name="answer3" rows={3} className="w-full resize-none rounded-md border border-gray-300 p-2 text-sm" />
+        <ErrorMessage name="answer3" component="div" className="text-xs text-red-600" />
     </div>
 </>;
 

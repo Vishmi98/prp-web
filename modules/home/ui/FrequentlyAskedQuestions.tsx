@@ -64,6 +64,8 @@ const FrequentlyAskedQuestions = () => {
                             key={faq.id}
                             question={faq.question}
                             answer={faq.answer}
+                            answer2={faq.answer2}
+                            answer3={faq.answer3}
                             isOpen={activeFaq === index}
                             onToggle={() => setActiveFaq(activeFaq === index ? -1 : index)}
                         />
