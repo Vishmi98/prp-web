@@ -24,18 +24,18 @@ const OurStory = () => {
                     {/* Text Side */}
                     <div className="w-full lg:w-1/2">
                         <h2 className="text-3xl md:text-4xl font-semibold mb-6">
-                            Our Story
+                            Our Approach
                         </h2>
 
                         <div className="space-y-5 text-gray-600 leading-relaxed">
                             <p>
-                                Founded with a vision to redefine aesthetic medicine, our clinic specializes exclusively in Platelet-Rich Plasma (PRP) therapies. We recognized the immense potential of utilizing the body&apos;s own natural healing mechanisms to achieve remarkable results in hair restoration and skin rejuvenation.
+                                Our philosophy is simple: <span className="font-bold">quality care, personalised treatment and a focus on achieving
+                                    the best possible outcome for every client.</span>
                             </p>
                             <p>
-                                Over the years, we have treated thousands of patients, refining our techniques to deliver the most effective and comfortable experience possible. Our commitment to continuous research ensures that we remain at the forefront of regenerative aesthetic treatments.
-                            </p>
-                            <p>
-                                We believe that true luxury lies in personalized care, scientifically backed procedures, and natural-looking results that empower you to feel confident in your own skin.
+                                We believe that good results are not simply about the treatment itself. They are also about
+                                careful assessment, appropriate treatment planning, suitable medical oversight, consistency
+                                and ongoing care
                             </p>
                         </div>
 

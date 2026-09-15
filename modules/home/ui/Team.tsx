@@ -69,17 +69,17 @@ const Team = () => {
         //         </div>
         //     </div>
         // </section>
-        <section className="py-20 md:py-28 text-black bg-gray-50">
+        <section className="py-20 text-black bg-gray-50">
             <div className="w-[90%] xl:w-[85%] mx-auto">
 
                 {/* Section heading */}
                 <div className="mb-10 md:mb-14">
                     <p className="text-sm font-medium tracking-widest uppercase text-gray-500">
-                        Meet Your Doctor
+                        Meet Your Practitioner
                     </p>
 
                     <h2 className="mt-2 text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight">
-                        Expert Care. Personal Attention.
+                        Quality care, Personalized treatment
                     </h2>
                 </div>
 

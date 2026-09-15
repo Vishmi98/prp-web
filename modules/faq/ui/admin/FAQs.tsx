@@ -24,7 +24,7 @@ const FAQs = () => {
                             className="flex items-center gap-2 bg-black hover:bg-black/80 cursor-pointer text-white text-sm px-3 py-1 rounded-md shadow"
                         >
                             <BiPlus className="w-5 h-5" />
-                            Add Session
+                            Add FAQ
                         </button>
                         <FAQModal
                             isOpen={open}
