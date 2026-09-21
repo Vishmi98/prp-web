@@ -11,8 +11,8 @@ const Hero = () => {
     const router = useRouter();
 
     return (
-        <section className="relative h-screen flex items-center bg-white">
-            <div className="w-[90%] md:w-[85%] 2xl:w-[70%] mx-auto pt-10 md:pt-20 2xl:pt-0">
+        <section className="relative h-auto flex items-center bg-white">
+            <div className="w-[90%] md:w-[85%] 2xl:w-[70%] mx-auto py-20 2xl:py-0">
                 <div className="flex flex-col lg:flex-row gap-5 items-center">
                     {/* LEFT CONTENT */}
                     <div className="w-full lg:w-1/2">

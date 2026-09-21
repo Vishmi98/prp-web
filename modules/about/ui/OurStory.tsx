@@ -11,7 +11,7 @@ const OurStory = () => {
 
                     {/* Image Side */}
                     <div className="w-full col-span-2 relative">
-                        <div className="relative h-[280px] md:h-[480px] 2xl:h-[650px] w-full rounded-sm overflow-hidden">
+                        <div className="relative h-[260px] md:h-[480px] 2xl:h-[650px] w-full rounded-sm overflow-hidden">
                             <ImageWithSkeleton
                                 src="/My pic 1.png"
                                 alt="Clinic Interior"
@@ -33,9 +33,9 @@ const OurStory = () => {
                                     the best possible outcome for every client.</span>
                             </p>
                             <p>
-                                We believe that good results are not simply about the treatment itself. They are also about
-                                careful assessment, appropriate treatment planning, suitable medical oversight, consistency
-                                and ongoing care
+                                We believe that good results are not simply about the treatment itself.
+                                They are also about careful assessment, appropriate treatment planning,
+                                suitable medical oversight, consistency and ongoing care
                             </p>
                         </div>
 

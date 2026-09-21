@@ -5,7 +5,7 @@ const AboutHero = () => {
     return (
         <section className="bg-white pt-32 pb-20 relative">
             {/* Subtle background decoration */}
-            <div className="absolute top-0 right-0 w-1/3 h-[500px] bg-gradient-to-bl from-[#D4AF37]/10 to-transparent rounded-bl-full pointer-events-none" />
+            <div className="absolute top-0 right-0 w-1/3 h-[300px] md:h-[500px] bg-gradient-to-bl from-[#D4AF37]/10 to-transparent rounded-bl-full pointer-events-none" />
 
             <div className="w-[90%] xl:w-[85%] mx-auto relative z-10">
                 <div className="flex flex-col lg:flex-row gap-8 2xl:gap-20 items-center">
