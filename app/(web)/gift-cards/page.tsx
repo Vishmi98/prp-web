@@ -76,12 +76,12 @@ export default function GiftCardsPage() {
             Gift Cards
           </p>
           <h1 className="font-playfair text-4xl font-semibold text-[#111111] md:text-5xl">
-            Give the gift of confidence.
+            Gift Card Options
           </h1>
-          <p className="mt-4 text-sm leading-7 text-[#2a2a2a] md:text-base">
+          {/* <p className="mt-4 text-sm leading-7 text-[#2a2a2a] md:text-base">
             Share a premium self-care experience with a beautifully designed treatment gift card.
             Redeemable toward advanced PRP, skin, and hair restoration services.
-          </p>
+          </p> */}
         </div>
 
         {/* Error Handling */}

@@ -6,6 +6,7 @@ import Link from "next/link";
 import { HiBars3BottomLeft } from "react-icons/hi2";
 import { usePathname, useRouter } from "next/navigation";
 import { BiChevronDown } from "react-icons/bi";
+import Image from "next/image";
 
 import Button from "../Button";
 
@@ -109,13 +110,15 @@ const Nav = ({ openNav }: NavProps) => {
         <header className="fixed top-0 left-0 w-full z-[1005] h-[8vh] md:h-[13vh] transition-all duration-500 bg-white text-black">
             <div className="flex items-center justify-between h-full w-[90%] xl:w-[85%] mx-auto">
                 {/* Logo */}
-                <Link href="/" className="flex flex-col leading-tight">
-                    <span className="font-playfair text-2xl md:text-4xl font-semibold tracking-wide bg-black bg-clip-text text-transparent">
-                        Aura
-                    </span>
-                    <span className="text-xs md:text-sm uppercase tracking-[3px]">
-                        PRP Clinic
-                    </span>
+                <Link href="/" className="flex items-center">
+                    <Image
+                        src="/logo1.png"
+                        alt="PRP Clinic"
+                        width={180}
+                        height={60}
+                        priority
+                        className="h-auto w-[70px] object-contain"
+                    />
                 </Link>
 
                 {/* Desktop Nav */}

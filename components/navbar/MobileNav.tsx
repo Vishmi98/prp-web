@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { CgClose } from "react-icons/cg";
 import { BiChevronDown } from "react-icons/bi";
+import Image from "next/image";
 
 import Button from "../Button";
 
@@ -81,18 +82,15 @@ const MobileNav = ({ closeNav, showNav }: MobileNavProps) => {
         className={`${navOpen} fixed justify-start pt-10 flex flex-col h-full transform transition-all duration-500 delay-300 w-[80%] sm:w-[60%] bg-white space-y-10 z-[1050] overflow-y-auto`}
       >
         {/* Logo */}
-        <Link
-          href="/"
-          onClick={handleCloseNav}
-          className="flex flex-col leading-tight ml-6"
-        >
-          <span className="font-playfair text-2xl md:text-4xl font-semibold tracking-wide bg-black bg-clip-text text-transparent">
-            Aura
-          </span>
-
-          <span className="text-xs md:text-sm uppercase tracking-[3px]">
-            PRP Clinic
-          </span>
+        <Link href="/" className="flex items-center ml-6">
+          <Image
+            src="/logo1.png"
+            alt="PRP Clinic"
+            width={180}
+            height={60}
+            priority
+            className="h-auto w-[70px] object-contain"
+          />
         </Link>
 
         {/* Nav Items */}
@@ -132,8 +130,8 @@ const MobileNav = ({ closeNav, showNav }: MobileNavProps) => {
                     {/* Dropdown Content */}
                     <div
                       className={`overflow-hidden transition-all duration-300 flex flex-col gap-3 pl-4 ${openDropdown === link.label
-                          ? "max-h-[500px] opacity-100 pt-2"
-                          : "max-h-0 opacity-0"
+                        ? "max-h-[500px] opacity-100 pt-2"
+                        : "max-h-0 opacity-0"
                         }`}
                     >
                       {/* Loading Skeleton */}

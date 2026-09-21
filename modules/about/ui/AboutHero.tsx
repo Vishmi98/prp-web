@@ -8,24 +8,34 @@ const AboutHero = () => {
             <div className="absolute top-0 right-0 w-1/3 h-[500px] bg-gradient-to-bl from-[#D4AF37]/10 to-transparent rounded-bl-full pointer-events-none" />
 
             <div className="w-[90%] xl:w-[85%] mx-auto relative z-10">
-                <div className="flex flex-col lg:flex-row gap-8 items-center">
+                <div className="flex flex-col lg:flex-row gap-8 2xl:gap-20 items-center">
 
                     {/* Left Typography Side */}
-                    <div className="w-full lg:w-[55%]">
-                        <div className="inline-block px-4 py-1.5 rounded-full bg-black/10 text-black font-semibold text-xs mb-6 border border-blacl/20">
-                            About Our Clinic
-                        </div>
+                    <div className="w-full lg:w-[55%] 2xl:w-[60%]">
                         <h1 className="text-3xl md:text-5xl font-semibold leading-tight mb-6">
-                            Elevating Aesthetics
-                            <span className="text-gold"> Through Science</span>
+                            About
+                            <span className="text-gold"> Us</span>
                         </h1>
-                        <p className="text-gray-600 text-sm md:text-base leading-relaxed max-w-xl">
-                            We are pioneers in advanced PRP (Platelet-Rich Plasma) therapies. Our commitment is to deliver natural, long-lasting results for hair restoration and skin rejuvenation in a luxurious, medically-sound environment.
+                        <p className="text-gray-600 text-sm md:text-base leading-relaxed w-full">
+                            At
+                            <span className="font-semibold pl-1">
+                                PRP for Skin & Hair
+                            </span>
+                            , we believe that every client is unique,
+                            and so is their skin, hair and treatment journey. We provide Platelet Rich
+                            Plasma (PRP) and Platelet Rich Fibrin (PRF) treatments for skin and hair, with
+                            a strong focus on personalised care, thorough assessment and treatment
+                            planning tailored to each individual. As an independently operated clinic, every
+                            consultation and treatment is personally provided by an experienced Registered
+                            Nurse, with a strong commitment to professional standards, patient safety and
+                            quality care. Rather than taking a one-size-fits-all approach, we take the time to
+                            understand your concerns, assess your individual needs and discuss your
+                            treatment goals before developing an appropriate treatment plan.
                         </p>
                     </div>
 
                     {/* Right Contact Details Side */}
-                    <div className="w-full lg:w-[45%]">
+                    <div className="w-full lg:w-[45%] 2xl:w-[40%]">
                         <div className="bg-gray-50 border border-gray-100 rounded-sm p-4 md:p-10 shadow-lg relative overflow-hidden">
                             {/* Gold Top Border */}
                             <div className="absolute top-0 left-0 w-full h-1 bg-gold" />
@@ -42,7 +52,7 @@ const AboutHero = () => {
                                     </div>
                                     <div>
                                         <p className="text-sm text-gray-500 font-medium">Call Us</p>
-                                        <p className="text-lg font-semibold text-gray-900">+61 460 351 834</p>
+                                        <p className="font-semibold text-gray-900">0460 351 834</p>
                                     </div>
                                 </a>
 
@@ -55,7 +65,7 @@ const AboutHero = () => {
                                     </div>
                                     <div>
                                         <p className="text-sm text-gray-500 font-medium">Email Us</p>
-                                        <p className="text-lg font-semibold text-gray-900">admin@prp4skinandhair.com.au</p>
+                                        <p className="font-semibold text-gray-900">admin@prp4skinandhair.com.au</p>
                                     </div>
                                 </a>
 
@@ -67,7 +77,7 @@ const AboutHero = () => {
                                     <div>
                                         <p className="text-sm text-gray-500 font-medium">Location</p>
                                         <p className="text-base font-semibold text-gray-900 leading-snug">
-                                            Victoria, Australia
+                                            9, Fernwren Drive Berwick 3806- Victoria
                                         </p>
                                     </div>
                                 </div>
@@ -78,10 +88,9 @@ const AboutHero = () => {
                                         <BiTime size={20} />
                                     </div>
                                     <div>
-                                        <p className="text-sm text-gray-500 font-medium">Working Hours</p>
+                                        <p className="text-sm text-gray-500 font-medium">Appointments</p>
                                         <p className="text-base font-semibold text-gray-900">
-                                            Mon - Fri: 9:00 AM - 6:00 PM<br />
-                                            Sat: 10:00 AM - 4:00 PM
+                                            up on requests
                                         </p>
                                     </div>
                                 </div>

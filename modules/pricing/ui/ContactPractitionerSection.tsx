@@ -49,7 +49,7 @@ export default function ContactPractitionerSection() {
                         <div>
                             <p className="text-xs uppercase tracking-wider text-stone-500 font-medium">Call Us</p>
                             <p className="text-sm md:text-base font-semibold text-stone-900 group-hover:text-[#D4AF37] transition-colors">
-                                +61 460 351 834
+                                0460 351 8344
                             </p>
                         </div>
                     </a>
@@ -137,7 +137,7 @@ export default function ContactPractitionerSection() {
 
                         <div className="flex items-center gap-2.5 rounded-lg border border-stone-800 bg-stone-900/60 px-3.5 py-2.5 text-xs text-stone-300 sm:col-span-2">
                             <HiOutlineMapPin className="h-4 w-4 text-[#F3D77B] shrink-0" />
-                            <span>Victoria, Australia</span>
+                            <span>9, Fernwren Drive Berwick 3806- Victoria</span>
                         </div>
                     </div>
                 </div>

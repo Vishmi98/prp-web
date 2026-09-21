@@ -3,26 +3,29 @@
 import React from "react";
 import Link from "next/link";
 import { FaClock, FaEnvelope, FaFacebookF, FaInstagram, FaMapMarkerAlt, FaPhoneAlt, FaWhatsapp } from "react-icons/fa";
+import Image from "next/image";
 
 
 const Footer = () => {
     return (
         <footer
             id="contact"
-            className="relative w-full text-white px-6 md:px-16 lg:px-24 pt-20 pb-8 bg-black/10"
+            className="relative w-full text-white px-6 md:px-16 lg:px-24 pt-10 md:pt-20 pb-8 bg-black/10"
         >
             {/* Top Section */}
             <div className="grid grid-cols-2 lg:grid-cols-7 gap-10">
 
                 {/* Logo + About */}
                 <div className="col-span-2">
-                    <Link href="/" className="flex flex-col leading-tight">
-                        <span className="font-playfair text-2xl md:text-4xl font-semibold bg-black bg-clip-text text-transparent">
-                            Aura
-                        </span>
-                        <span className="text-xs md:text-sm text-black uppercase tracking-[3px]">
-                            PRP Clinic
-                        </span>
+                    <Link href="/" className="flex items-center">
+                        <Image
+                            src="/logo1.png"
+                            alt="PRP Clinic"
+                            width={180}
+                            height={60}
+                            priority
+                            className="h-auto w-[100px] object-contain"
+                        />
                     </Link>
                     <p className="text-sm text-black mt-2 ">
                         Advanced PRP treatments for hair regrowth and skin rejuvenation.
@@ -59,6 +62,7 @@ const Footer = () => {
                     <ul className="space-y-2 text-black text-sm">
                         <li>Platelet-Rich Fibrin (PRF) Therapy</li>
                         <li>Platelet-Rich Plasma (PRP) Therapy</li>
+                        <li>Novobio Red Light Hair Cap</li>
                     </ul>
                 </div>
 
@@ -70,12 +74,12 @@ const Footer = () => {
                     <ul className="space-y-3 text-black text-sm">
                         <li className="flex items-center gap-3">
                             <FaMapMarkerAlt />
-                            <span>Victoria, Australia</span>
+                            <span>9, Fernwren Drive Berwick 3806- Victoria</span>
                         </li>
 
                         <li className="flex items-center gap-3">
                             <FaPhoneAlt />
-                            <span>+61 460 351 834</span>
+                            <span>0460 351 834</span>
                         </li>
 
                         <li className="flex items-center gap-3">
@@ -85,7 +89,7 @@ const Footer = () => {
 
                         <li className="flex items-center gap-3">
                             <FaClock />
-                            <span>Mon - Sat: 9AM - 7PM</span>
+                            <span>Appointments - up on requests</span>
                         </li>
                     </ul>
 
@@ -109,7 +113,7 @@ const Footer = () => {
 
             {/* Bottom Section */}
             <div className="flex flex-col md:flex-row justify-between items-center text-black text-xs">
-                <p>© {new Date().getFullYear()} Aura PRP Clinic. All rights reserved.</p>
+                <p>© {new Date().getFullYear()} PRP Clinic. All rights reserved.</p>
 
                 <div className="flex gap-4 mt-3 md:mt-0">
                     <Link href="#" className="hover:font-semibold">Privacy Policy</Link>

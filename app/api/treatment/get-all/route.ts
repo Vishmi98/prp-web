@@ -37,7 +37,7 @@ export async function POST(req: NextRequest) {
                 },
             );
         } else {
-            treatments = await TreatmentModel.find({ isPublish: true }).sort({ createdAt: -1 }).lean();
+            treatments = await TreatmentModel.find({ isPublish: true }).sort({ createdAt: 1 }).lean();
 
             return sendSuccessResponse(
                 "All treatments fetched successfully", {

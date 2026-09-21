@@ -33,17 +33,14 @@ const ContactPage = () => {
                 {/* Heading */}
                 <div className="text-center max-w-3xl mx-auto mb-20">
                     <h1 className="text-3xl md:text-4xl font-semibold text-black leading-tight">
-                        Begin Your
-                        <span className="block mt-2">
-                            Rejuvenation Journey
-                        </span>
+                        Get In Touch
                     </h1>
-
+                    {/* 
                     <p className="text-gray-600 leading-relaxed mt-6">
                         Speak with our experienced PRP specialists and discover
                         personalized treatments tailored to your beauty and
                         wellness goals.
-                    </p>
+                    </p> */}
                 </div>
 
                 {/* Main Grid */}
@@ -53,7 +50,7 @@ const ContactPage = () => {
                     <div className="space-y-8">
 
                         <div>
-                            <h2 className="text-2xl md:text-3xl font-semibold mb-6">
+                            {/* <h2 className="text-2xl md:text-3xl font-semibold mb-6">
                                 Get In Touch
                             </h2>
 
@@ -62,7 +59,7 @@ const ContactPage = () => {
                                 therapies tailored to your personal beauty and
                                 wellness goals. Contact our team today to begin
                                 your transformation journey.
-                            </p>
+                            </p> */}
 
                             <div className="space-y-8 mt-10">
 
@@ -81,7 +78,7 @@ const ContactPage = () => {
                                         </p>
 
                                         <h3 className="text-lg md:text-xl font-semibold text-black">
-                                            +61 460 351 834
+                                            0460 351 834
                                         </h3>
                                     </div>
                                 </div>
@@ -122,7 +119,7 @@ const ContactPage = () => {
                                         </p>
 
                                         <h3 className="text-lg md:text-xl font-semibold text-black">
-                                            Victoria, Australia
+                                            9, Fernwren Drive Berwick 3806- Victoria
                                         </h3>
                                     </div>
                                 </div>
@@ -138,11 +135,11 @@ const ContactPage = () => {
 
                                     <div>
                                         <p className="text-sm uppercase tracking-[2px] text-gray-500 mb-1">
-                                            Opening Hours
+                                            Appointments
                                         </p>
 
                                         <h3 className="text-lg md:text-xl font-semibold text-black">
-                                            Mon - Sat : 9AM - 7PM
+                                            up on requests
                                         </h3>
                                     </div>
                                 </div>
@@ -152,6 +149,18 @@ const ContactPage = () => {
 
                     {/* Contact Form */}
                     <InquiryForm />
+                </div>
+
+                <div className=" mt-28 mx-auto w-full overflow-hidden rounded-sm bg-black shadow-[0_15px_50px_rgba(0,0,0,0.08)]">
+                    <div className="relative aspect-video w-full">
+                        <iframe
+                            className="absolute inset-0 h-full w-full"
+                            src="https://www.youtube.com/embed/vLWiaYJDi2M?start=104"
+                            title="PRP Clinic Treatment Video"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowFullScreen
+                        />
+                    </div>
                 </div>
 
                 {/* FAQ Section */}

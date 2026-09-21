@@ -7,13 +7,13 @@ const OurStory = () => {
     return (
         <section className="py-20 bg-[#D4AF37]/10 text-black">
             <div className="w-[90%] xl:w-[85%] mx-auto">
-                <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-10 items-center">
 
                     {/* Image Side */}
-                    <div className="w-full lg:w-1/2 relative">
-                        <div className="relative h-[385px] md:h-[480px] 2xl:h-[610px] w-full rounded-sm overflow-hidden">
+                    <div className="w-full col-span-2 relative">
+                        <div className="relative h-[280px] md:h-[480px] 2xl:h-[650px] w-full rounded-sm overflow-hidden">
                             <ImageWithSkeleton
-                                src="/Alocuro machine.png"
+                                src="/My pic 1.png"
                                 alt="Clinic Interior"
                                 fill
                                 className="object-cover"
@@ -22,7 +22,7 @@ const OurStory = () => {
                     </div>
 
                     {/* Text Side */}
-                    <div className="w-full lg:w-1/2">
+                    <div className="w-full">
                         <h2 className="text-3xl md:text-4xl font-semibold mb-6">
                             Our Approach
                         </h2>

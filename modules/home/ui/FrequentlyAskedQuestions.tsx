@@ -37,15 +37,14 @@ const FrequentlyAskedQuestions = () => {
             <div className="absolute right-0 top-0 h-full w-1/3 bg-gradient-to-l from-[#D4AF37]/10 to-transparent" />
 
             <div className="relative z-10 mx-auto w-[90%] xl:w-[85%]">
-                <div className="mx-auto mb-12 max-w-2xl text-center md:mb-16">
-                    <p className="mb-3 text-sm font-medium uppercase tracking-[3px] text-gold">
-                        Need to know
-                    </p>
+                <div className="mx-auto mb-12 max-w-4xl text-center md:mb-16">
                     <h2 className="text-3xl font-semibold leading-tight md:text-4xl">
                         Frequently Asked Questions
                     </h2>
                     <p className="mt-4 text-gray-600">
-                        Clear answers to help you feel confident before your PRP consultation.
+                        Some frequently asked general questions about PRP/PRF
+                        treatments to help you learn more before discussing your individual concerns and
+                        treatment suitability with our practitioner.
                     </p>
                 </div>
 

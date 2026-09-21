@@ -5,6 +5,7 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import { useRouter } from "next/navigation";
 import jwt from "jsonwebtoken";
 import { toast } from "react-toastify";
+import Image from "next/image";
 
 import { handleVerifyUser } from "../services/auth.service";
 import { verifyEmailModalInitialValues, verifyEmailModalValidationSchema } from "../auth.utils";
@@ -24,14 +25,15 @@ const EmailVerificationForm = () => {
         <div className="w-full bg-white border border-gray-100 rounded-2xl shadow-lg p-8">
             {/* Logo */}
             <div className="flex justify-center mb-8">
-                <div className="flex flex-col leading-tight">
-                    <span className="font-playfair text-2xl md:text-4xl font-semibold tracking-wide bg-black bg-clip-text text-transparent">
-                        Aura
-                    </span>
-
-                    <span className="text-xs md:text-sm uppercase tracking-[3px]">
-                        PRP Clinic
-                    </span>
+                <div className="flex items-center">
+                    <Image
+                        src="/logo1.png"
+                        alt="PRP Clinic"
+                        width={180}
+                        height={60}
+                        priority
+                        className="h-auto w-[80px] object-contain"
+                    />
                 </div>
             </div>
             <Formik

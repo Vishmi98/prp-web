@@ -3,10 +3,11 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { FaNotesMedical, FaPenSquare, FaUsers } from 'react-icons/fa';
+import { FaNotesMedical, FaPenSquare } from 'react-icons/fa';
 import { FiLogOut } from 'react-icons/fi';
 import { HiOutlineCube, HiOutlineGift, HiOutlineMail, HiOutlineSparkles } from 'react-icons/hi' // Replace with your exact imports
-import { MdOutlineAutoStories, MdOutlineQuiz } from 'react-icons/md';
+import { MdOutlineQuiz } from 'react-icons/md';
+import Image from 'next/image';
 
 import { handleCleanCookie } from '@/utils/cookie.util';
 import { ProfileLink, SidebarProps } from '@/constants/types';
@@ -53,13 +54,15 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, setIsOpen }) => {
         {/* Added flex flex-col min-h-0 to wrapper to constrain the inner nav scroll */}
         <div className="flex flex-col flex-1 min-h-0">
           <div className="flex items-center justify-center gap-3 mt-5 md:mt-0 pb-4 shrink-0">
-            <Link href="/admin/treatments" className="flex flex-col leading-tight">
-              <span className="font-playfair text-2xl md:text-4xl font-semibold tracking-wide bg-black bg-clip-text text-transparent">
-                Aura
-              </span>
-              <span className="text-xs md:text-sm uppercase tracking-[3px]">
-                PRP Clinic
-              </span>
+            <Link href="/" className="flex items-center">
+              <Image
+                src="/logo1.png"
+                alt="PRP Clinic"
+                width={180}
+                height={60}
+                priority
+                className="h-auto w-[70px] object-contain"
+              />
             </Link>
           </div>
 

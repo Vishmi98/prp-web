@@ -26,10 +26,6 @@ export default function PricingOverviewPage() {
           <h1 className="font-playfair text-4xl font-semibold md:text-6xl">
             Choose the plan that fits your treatment goals.
           </h1>
-          <p className="mt-5 max-w-2xl text-sm text-gray-700 md:text-base">
-            Personalized regenerative care with premium clinical standards, transparent fees,
-            and tailored packages designed to deliver long-term results.
-          </p>
         </div>
 
         <div className="grid gap-8 md:grid-cols-2">
@@ -44,7 +40,7 @@ export default function PricingOverviewPage() {
               <h2 className="font-playfair text-3xl font-semibold">
                 {item.title}
               </h2>
-              <p className="mt-4 text-sm leading-7 text-gray-800">{item.description}</p>
+              {/* <p className="mt-4 text-sm leading-7 text-gray-800">{item.description}</p> */}
 
               <div className="mt-8">
                 <Link href={item.href}>

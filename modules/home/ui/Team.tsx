@@ -79,12 +79,12 @@ const Team = () => {
                     </p>
 
                     <h2 className="mt-2 text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight">
-                        Quality care, Personalized treatment
+                        Personalized Treatments , High quality Care
                     </h2>
                 </div>
 
                 {/* Doctor Image */}
-                <div className="relative w-full h-[250px] sm:h-[400px] md:h-[550px] lg:h-[700px] 2xl:h-screen rounded-2xl overflow-hidden bg-gray-200">
+                <div className="relative w-full h-[250px] sm:h-[400px] md:h-[550px] lg:h-[700px] 2xl:h-[110vh] rounded-2xl overflow-hidden bg-gray-200">
                     <ImageWithSkeleton
                         src="/doctor.png"
                         alt="Our Doctor"
@@ -92,7 +92,6 @@ const Team = () => {
                         className="object-cover"
                     />
                 </div>
-
             </div>
         </section>
     );

@@ -15,9 +15,9 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, index }) => {
     const imageUrl = service.thumbnailImagePath || "/placeholder-service.jpg";
 
     return (
-        <div className="overflow-hidden hover:scale-[1.02] transition duration-300">
+        <div className="overflow-hidden w-full hover:scale-[1.02] transition duration-300">
             {/* Image Container */}
-            <div className="relative w-full h-72 md:h-64 bg-gray-100 rounded-sm overflow-hidden">
+            <div className="relative w-full h-70 2xl:h-80 bg-gray-100 overflow-hidden">
                 <ImageWithSkeleton
                     src={imageUrl}
                     alt={service.title}
@@ -28,13 +28,13 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, index }) => {
             </div>
 
             {/* Content */}
-            <div className="py-5">
+            <div className="py-4">
                 <div className="flex items-start gap-3 mb-3">
                     <h1 className="text-3xl font-bold text-gold">
                         {displayId}.
                     </h1>
-                    <h3 className="text-lg font-medium text-black">{service.title}</h3>
                 </div>
+                <h3 className="text-lg font-semibold text-black">{service.title}</h3>
                 <p className="text-gray-700 text-sm mt-2 leading-relaxed">
                     {service.description}
                 </p>

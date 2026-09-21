@@ -20,7 +20,7 @@ export class EmailService {
       });
 
       const mailOptions = {
-        from: `"Aura PRP Clinic" <${emailConfig.user}>`,
+        from: `"PRP for Skin & Hair" <${emailConfig.user}>`,
         to: email,
         subject: "Verify Your Email Address",
         text: `Please use the following verification code to verify your account: ${verificationCode}`,

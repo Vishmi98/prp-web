@@ -23,7 +23,7 @@ const poppins = Poppins({
 })
 
 export const metadata: Metadata = {
-  title: "Aura PRP Clinic | Hair & Skin Rejuvenation",
+  title: "PRP Clinic | Hair & Skin Rejuvenation",
   description: "Premium Platelet-Rich Plasma (PRP) treatments for natural hair restoration and skin rejuvenation",
 };
 

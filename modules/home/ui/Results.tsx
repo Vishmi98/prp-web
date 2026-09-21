@@ -69,8 +69,8 @@ const Results = () => {
                             Before & After Results
                         </h2>
                         <p className="mt-4">
-                            Real transformations from our PRP treatments. Visible, natural,
-                            and long-lasting results.
+                            The images below show individual treatment outcomes following
+                            PRP/PRF treatments.
                         </p>
                     </div>
 
@@ -81,8 +81,8 @@ const Results = () => {
                                 key={tab}
                                 onClick={() => setActiveTab(tab)}
                                 className={`px-6 py-2 rounded-full font-medium text-sm transition-all duration-300 ${activeTab === tab
-                                        ? "bg-[#D4AF37] text-white shadow-md"
-                                        : "text-gray-700 hover:text-black hover:bg-gray-100/50"
+                                    ? "bg-[#D4AF37] text-white shadow-md"
+                                    : "text-gray-700 hover:text-black hover:bg-gray-100/50"
                                     }`}
                             >
                                 {tab} Results
