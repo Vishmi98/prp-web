@@ -36,7 +36,7 @@ const Hero = () => {
                     </div>
                     {/* RIGHT IMAGE */}
                     <div className="w-full lg:w-1/2 relative pl-0 md:pl-16 2xl:pl-12">
-                        <div className="relative h-[385px] md:h-[460px] 2xl:h-[610px] w-full rounded-sm overflow-hidden">
+                        <div className="relative h-[360px] md:h-[460px] 2xl:h-[610px] w-full rounded-sm overflow-hidden">
                             <ImageWithSkeleton
                                 src="/Alocuro machine.png"
                                 alt="Clinic Interior"
