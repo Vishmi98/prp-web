@@ -17,7 +17,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, index }) => {
     return (
         <div className="overflow-hidden w-full hover:scale-[1.02] transition duration-300">
             {/* Image Container */}
-            <div className="relative w-full h-70 2xl:h-80 bg-gray-100 overflow-hidden">
+            <div className="relative w-full h-85 2xl:h-110 bg-gray-100 overflow-hidden">
                 <ImageWithSkeleton
                     src={imageUrl}
                     alt={service.title}

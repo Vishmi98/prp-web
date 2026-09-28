@@ -11,7 +11,6 @@ import { TreatmentDataType } from "../../treatments.types";
 import { createTreatment } from "../../treatments.service";
 import { addTreatmentInitialValues, addTreatmentValidationSchema } from "../../treatments.utils";
 
-import { MAX_SIZE_MB } from "@/constants/data";
 import CropModal from "@/components/ImageCropper";
 import { AddModalProps } from "@/constants/types";
 import { slugify } from "@/utils/slug";
@@ -30,11 +29,6 @@ const AddTreatmentModal: FC<AddModalProps> = ({ isOpen, onClose, handleReload })
     const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>, type: "thumbnail" | "cover") => {
         const file = event.target.files?.[0];
         if (!file) return;
-
-        if (file.size > MAX_SIZE_MB) {
-            toast.error(`Please upload ${type} image smaller than 1.1 MB.`);
-            return;
-        }
 
         setTempImageFile(file);
         setCropFor(type);
@@ -345,8 +339,8 @@ const AddTreatmentModal: FC<AddModalProps> = ({ isOpen, onClose, handleReload })
                                     imageFile={tempImageFile}
                                     onCropComplete={handleCropComplete}
                                     onClose={() => setIsCropOpen(false)}
-                                    cropWidth={cropFor === "thumbnail" ? 500 : 1800}
-                                    cropHeight={cropFor === "thumbnail" ? 600 : 900}
+                                    cropWidth={cropFor === "thumbnail" ? 620 : 1800}
+                                    cropHeight={cropFor === "thumbnail" ? 650 : 900}
                                 />
                             )}
                             <div className="flex justify-end space-x-2 p-4">

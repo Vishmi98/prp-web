@@ -56,7 +56,7 @@ const TreatmentOverview = ({ treatment }: TreatmentDetailsProps) => {
                 <div className="absolute top-0 left-0 w-72 h-72 bg-[#D4AF37]/10 blur-3xl rounded-full" />
                 <div className="absolute bottom-0 right-0 w-72 h-72 bg-black/5 blur-3xl rounded-full" />
 
-                <div className="relative z-10 w-[90%] xl:w-[85%] mx-auto">
+                <div className="relative z-10 w-[90%] 2xl:w-[75%] mx-auto">
                     {/* Top Section */}
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-start">
                         {/* Left Content */}
@@ -80,7 +80,7 @@ const TreatmentOverview = ({ treatment }: TreatmentDetailsProps) => {
 
                         {/* Right Image */}
                         <div className="relative">
-                            <div className="relative h-[380px] md:h-[520px] rounded-lg overflow-hidden shadow-lg bg-gray-100">
+                            <div className="relative h-[380px] md:h-[520px] 2xl:h-[600px] rounded-lg overflow-hidden shadow-lg bg-gray-100">
                                 {thumbnailImagePath ? (
                                     <ImageWithSkeleton
                                         src={thumbnailImagePath}
@@ -146,7 +146,7 @@ const TreatmentOverview = ({ treatment }: TreatmentDetailsProps) => {
             {/* Before After Slider */}
             {results && results.length > 0 && (
                 <div className="bg-[#D4AF37]/10 py-20">
-                    <div className="w-[90%] xl:w-[85%] mx-auto">
+                    <div className="w-[90%] 2xl:w-[75%] mx-auto">
                         <div className="flex items-center justify-between mb-6">
                             <div>
                                 <p className="uppercase tracking-[3px] text-gold text-sm mb-2 font-medium">
@@ -186,7 +186,7 @@ const TreatmentOverview = ({ treatment }: TreatmentDetailsProps) => {
             )}
 
             {/* Bottom Section */}
-            <div className="bg-white py-20 w-[90%] xl:w-[85%] mx-auto">
+            <div className="bg-white py-20 w-[90%] 2xl:w-[75%] mx-auto">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
                     {/* Procedure Steps */}
                     <div className="space-y-6">

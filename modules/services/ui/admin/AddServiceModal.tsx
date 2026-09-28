@@ -28,11 +28,6 @@ const AddServiceModal: FC<AddModalProps> = ({ isOpen, onClose, handleReload }) =
         const file = event.target.files?.[0];
         if (!file) return;
 
-        if (file.size > MAX_SIZE_MB) {
-            toast.error(`Please upload ${type} image smaller than 1.1 MB.`);
-            return;
-        }
-
         setTempImageFile(file);
         setCropFor(type);
         setIsCropOpen(true);

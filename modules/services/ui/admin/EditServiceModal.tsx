@@ -10,7 +10,6 @@ import { EditServiceModalProps, ServiceDataType } from "../../services.types";
 import { updateService } from "../../services.service";
 import { addServiceValidationSchema } from "../../services.utils";
 
-import { MAX_SIZE_MB } from "@/constants/data";
 import CropModal from "@/components/ImageCropper";
 
 
@@ -26,11 +25,6 @@ const EditServiceModal: React.FC<EditServiceModalProps> = ({ isOpen, onClose, in
     const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>, type: "thumbnail" | "cover") => {
         const file = event.target.files?.[0];
         if (!file) return;
-
-        if (file.size > MAX_SIZE_MB) {
-            toast.error(`Please upload ${type} image smaller than 1.1 MB.`);
-            return;
-        }
 
         setTempImageFile(file);
         setCropFor(type);
