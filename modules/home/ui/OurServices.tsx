@@ -102,7 +102,7 @@ const OurServices = () => {
                             No services found.
                         </p>
                     </div>
-                ) : services.length > 4 ? (
+                ) : services.length > 3 ? (
                     /* Carousel */
                     <Carousel
                         responsive={responsive}
